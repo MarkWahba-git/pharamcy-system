@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group([],function(){
+
+    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
+
+    Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
+
+});
