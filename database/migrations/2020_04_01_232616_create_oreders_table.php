@@ -22,10 +22,8 @@ class CreateOredersTable extends Migration
             $table->string('status');
             $table->unsignedBigInteger('pharmacy_id');
             $table->foreign('pharmacy_id')->references('id')->on('pharmacies');
-            $table->string('medicine_name');
-            $table->integer('quantity');
-            $table->string('medicine_type');
-            $table->decimal('price', 8, 2);
+            $table->unsignedBigInteger('medicine_id');
+            
             $table->timestamps();
         });
     }
