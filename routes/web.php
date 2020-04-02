@@ -28,3 +28,11 @@ Route::group([],function(){
     Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
 
 });
+
+Route::group([],function(){
+
+    Route::get('/drugs','DrugController@index')->name('drugs.index');
+
+   Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
+
+});
