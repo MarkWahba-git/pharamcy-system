@@ -14,13 +14,13 @@
  <body>
   <div class="container">    
      <br />
-     <h3 align="center">Laravel 5.8 Ajax Crud Tutorial - Delete or Remove Data</h3>
+     <h3 align="center">Our inventory of Drugs</h3>
      <br />
      <div align="right">
-      <button type="button" name="create_record" id="create_record" class="btn btn-success btn-sm">Create Record</button>
+     <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button>
      </div>
      <br />
-     <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button>
+     <!-- <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button> -->
    <div class="table-responsive">
     <table class="table table-bordered table-striped" id="drug_table">
            <thead>
@@ -44,14 +44,14 @@
                 </div>
                 <div class="modal-body">
                     {{csrf_field()}}
-                    <span id="form_output"></span>
+                    <span id="form_error_output"></span>
                     <div class="form-group">
                         <label>Enter the Drug Name</label>
                         <input type="text" name="form_drug_name" id="form_drug_name" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Enter the Drug Type</label>
-                        <input type="text" name="form_drug_name" id="form_drug_name" class="form-control" />
+                        <input type="text" name="form_drug_type" id="form_drug_type" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Enter the Drug Price </label>
@@ -59,6 +59,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <!-- a hidden input to check for it's type later C, R, U, or D -->
                     <input type="hidden" name="button_action" id="button_action" value="create" />
                     <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -72,10 +73,44 @@ $(document).ready(function() {
   $('#add_drug_btn').click(function(){
         $('#drugModal').modal('show');
         $('#add_drug_form')[0].reset();
-        $('#form_output').html('');
+        $('#form_error_output').html('');
         $('#button_action').val('create');
         $('#action').val('Add');
     });
+
+    $('#add_drug_form').on('submit', function(event){
+        event.preventDefault();
+        var form_data = $(this).serialize();
+        $.ajax({
+            url:"{{ route('drugs.postdrugs') }}",
+            method:"POST",
+            data:form_data,
+            dataType:"json",
+            success:function(data)
+            {
+                if(data.error.length > 0)
+                {
+                    var error_html = '';
+                    for(var count = 0; count < data.error.length; count++)
+                    {
+                        error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
+                    }
+                    $('#form_error_output').html(error_html);
+                }
+                else
+                {
+                    $('#form_error_output').html(data.success);
+                    $('#add_drug_form')[0].reset();
+                    $('#action').val('Add');
+                    $('.modal-title').text('Add Data');
+                    $('#button_action').val('create');
+                    $('#drug_table').DataTable().ajax.reload();
+                }
+            }
+        })
+        
+    });
+
 $('#drug_table').DataTable({
  processing: true,
  serverSide: true, 
@@ -89,12 +124,14 @@ $('#drug_table').DataTable({
   {
    data: 'drug_type',
   },
-  {
-    data: 'drug_unit_price'
-  },
+  { 
+      data: 'drug_unit_price', render: function (data, type, row) {
+             return '$ '+ data / 1000;
+            } }
  
  ]
 });
+
 });
 
 </script>
