@@ -12743,7 +12743,8 @@ Did you mean one of these?
 #10 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #11 {main}
 "} 
-[2020-04-05 14:45:09] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\outes\\api.php:5)
+[2020-04-05 14:45:09] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\
+outes\\api.php:5)
 [stacktrace]
 #0 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(417): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\Users\\\\Andrew...')
 #1 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(374): Illuminate\\Routing\\Router->loadRoutes('C:\\\\Users\\\\Andrew...')
@@ -12776,7 +12777,8 @@ Did you mean one of these?
 #28 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
 #29 {main}
 "} 
-[2020-04-05 14:46:02] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\outes\\web.php:15)
+[2020-04-05 14:46:02] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\
+outes\\web.php:15)
 [stacktrace]
 #0 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(417): Illuminate\\Routing\\RouteFileRegistrar->register('C:\\\\Users\\\\Andrew...')
 #1 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(374): Illuminate\\Routing\\Router->loadRoutes('C:\\\\Users\\\\Andrew...')
@@ -13469,4 +13471,69 @@ Did you mean one of these?
 #7 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\public\\index.php(60): Illuminate\\Foundation\\Http\\Kernel->terminate(Object(Illuminate\\Http\\Request), Object(Illuminate\\Http\\Response))
 #8 C:\\Users\\Andrew\\Desktop\\mark.wahba33-gmail.com\\server.php(21): require_once('C:\\\\Users\\\\Andrew...')
 #9 {main}
+[2020-04-05 16:36:55] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/app/Http/Kernel.php:6)
+[stacktrace]
+#0 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/composer/ClassLoader.php(322): Composer\\Autoload\\includeFile('/home/markwahba...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Kernel')
+#2 [internal function]: spl_autoload_call('App\\\\Http\\\\Kernel')
+#3 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(807): ReflectionClass->__construct('App\\\\Http\\\\Kernel')
+#4 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(685): Illuminate\\Container\\Container->build('App\\\\Http\\\\Kernel')
+#5 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(794): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Kernel', Array, false)
+#6 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(265): Illuminate\\Foundation\\Application->resolve('App\\\\Http\\\\Kernel', Array, false)
+#7 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): Illuminate\\Container\\Container->Illuminate\\Container\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#8 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(685): Illuminate\\Container\\Container->build(Object(Closure))
+#9 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array, true)
+#10 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Cont...', Array)
+#11 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#12 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/sanctum/src/SanctumServiceProvider.php(107): Illuminate\\Foundation\\Application->make('Illuminate\\\\Cont...')
+#13 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/sanctum/src/SanctumServiceProvider.php(54): Laravel\\Sanctum\\SanctumServiceProvider->configureMiddleware()
+#14 [internal function]: Laravel\\Sanctum\\SanctumServiceProvider->boot()
+#15 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#16 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#17 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#18 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#19 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#20 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(865): Illuminate\\Container\\Container->call(Array)
+#21 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(848): Illuminate\\Foundation\\Application->bootProvider(Object(Laravel\\Sanctum\\SanctumServiceProvider))
+#22 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Laravel\\Sanctum\\SanctumServiceProvider), 18)
+#23 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(849): array_walk(Array, Object(Closure))
+#24 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#25 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(228): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#26 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#27 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#28 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 {main}
+"} 
+[2020-04-05 16:44:22] local.ERROR: syntax error, unexpected '<<' (T_SL), expecting end of file {"exception":"[object] (ParseError(code: 0): syntax error, unexpected '<<' (T_SL), expecting end of file at /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/app/Http/Kernel.php:6)
+[stacktrace]
+#0 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/composer/ClassLoader.php(322): Composer\\Autoload\\includeFile('/home/markwahba...')
+#1 [internal function]: Composer\\Autoload\\ClassLoader->loadClass('App\\\\Http\\\\Kernel')
+#2 [internal function]: spl_autoload_call('App\\\\Http\\\\Kernel')
+#3 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(807): ReflectionClass->__construct('App\\\\Http\\\\Kernel')
+#4 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(685): Illuminate\\Container\\Container->build('App\\\\Http\\\\Kernel')
+#5 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(794): Illuminate\\Container\\Container->resolve('App\\\\Http\\\\Kernel', Array, false)
+#6 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(265): Illuminate\\Foundation\\Application->resolve('App\\\\Http\\\\Kernel', Array, false)
+#7 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(803): Illuminate\\Container\\Container->Illuminate\\Container\\{closure}(Object(Illuminate\\Foundation\\Application), Array)
+#8 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(685): Illuminate\\Container\\Container->build(Object(Closure))
+#9 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(794): Illuminate\\Container\\Container->resolve('Illuminate\\\\Cont...', Array, true)
+#10 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(633): Illuminate\\Foundation\\Application->resolve('Illuminate\\\\Cont...', Array)
+#11 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(779): Illuminate\\Container\\Container->make('Illuminate\\\\Cont...', Array)
+#12 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/sanctum/src/SanctumServiceProvider.php(107): Illuminate\\Foundation\\Application->make('Illuminate\\\\Cont...')
+#13 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/sanctum/src/SanctumServiceProvider.php(54): Laravel\\Sanctum\\SanctumServiceProvider->configureMiddleware()
+#14 [internal function]: Laravel\\Sanctum\\SanctumServiceProvider->boot()
+#15 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(32): call_user_func_array(Array, Array)
+#16 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Util.php(36): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#17 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(90): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#18 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(34): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#19 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Container/Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#20 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(865): Illuminate\\Container\\Container->call(Array)
+#21 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(848): Illuminate\\Foundation\\Application->bootProvider(Object(Laravel\\Sanctum\\SanctumServiceProvider))
+#22 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(Laravel\\Sanctum\\SanctumServiceProvider), 18)
+#23 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(849): array_walk(Array, Object(Closure))
+#24 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#25 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(228): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#26 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#27 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#28 /home/markwahba/Desktop/pharamcy-system/Dev/pharamcy-system/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#29 {main}
 "} 
