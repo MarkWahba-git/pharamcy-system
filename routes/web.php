@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+<<<<<<< HEAD
 // from andrew
 
 Route::get('/', function () {
@@ -38,3 +39,9 @@ Route::group([],function(){
    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
 
 });
+=======
+
+Route::get('/', function () {
+    return view('welcome');
+});
+>>>>>>> andrew
