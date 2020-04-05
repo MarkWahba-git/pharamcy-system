@@ -109,7 +109,11 @@ $(document).ready(function() {
                     $('.modal-title').text('Add Data');
                     $('#button_action').val('create');
                     $('#drug_table').DataTable().ajax.reload();
+                    setTimeout(function() {
+                    $('#drugModal').modal('hide');
+                    }, 1000);
                 }
+
             }
         })
         
@@ -174,6 +178,9 @@ $(document).on('click', '.edit', function(){
                 {
                     alert(data);
                     $('#drug_table').DataTable().ajax.reload();
+                    setTimeout(function() {
+                    $('#drugModal').modal('hide');
+                    }, 1000);
                 }
             })
         }
