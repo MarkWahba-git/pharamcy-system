@@ -26,9 +26,10 @@
            <thead>
             <tr>
              
-                <th width="35%">Drug Name</th>
-                <th width="35%">Drug Type</th>
-                <th width="30%">Unit Price</th>
+                <th width="25%">Drug Name</th>
+                <th width="25%">Drug Type</th>
+                <th width="25%">Unit Price</th>
+                <th width="25%">Actions</th>
             </tr>
            </thead>
        </table>
@@ -61,6 +62,7 @@
                 <div class="modal-footer">
                     <!-- a hidden input to check for it's type later C, R, U, or D -->
                     <input type="hidden" name="button_action" id="button_action" value="create" />
+                    <input type="hidden" name="form_drug_id" id="form_drug_id" value="" />
                     <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
@@ -70,7 +72,8 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-  $('#add_drug_btn').click(function(){
+
+        $('#add_drug_btn').click(function(){
         $('#drugModal').modal('show');
         $('#add_drug_form')[0].reset();
         $('#form_error_output').html('');
@@ -126,11 +129,61 @@ $('#drug_table').DataTable({
   },
   { 
       data: 'drug_unit_price', render: function (data, type, row) {
-             return '$ '+ data / 1000;
-            } }
+             return '$ '+ data /1000 ;
+            } },
+    {
+    data: "action", orderable:false, searchable: false
+    }
+
  
  ]
 });
+
+$(document).on('click', '.edit', function(){
+        var id = $(this).attr("id");
+        $('#form_error_output').html('');
+        $.ajax({
+            url:"{{route('drugs.fetchdrugs')}}",
+            method:'get',
+            data:{id:id},
+            dataType:'json',
+            success:function(data)
+            {
+                $('#form_drug_name').val(data.drug_name);
+                $('#form_drug_type').val(data.drug_type);
+                $('#form_drug_unit_price').val(data.drug_unit_price);
+                $('#form_drug_id').val(id);
+                $('#drugModal').modal('show');
+                $('#action').val('Edit');
+                $('.modal-title').text('Edit Data');
+                $('#button_action').val('update');
+            }
+        })
+    });
+
+    $(document).on('click', '.delete', function(){
+        var id = $(this).attr('id');
+        if(confirm("Are you sure you want to Delete this Drug?"))
+        {
+            $.ajax({
+                url:"{{route('drugs.deletedrugs')}}",
+                mehtod:"get",
+                data:{id:id},
+                success:function(data)
+                {
+                    alert(data);
+                    $('#drug_table').DataTable().ajax.reload();
+                }
+            })
+        }
+        else
+        {
+            return false;
+        }
+    }); 
+
+
+
 
 });
 
