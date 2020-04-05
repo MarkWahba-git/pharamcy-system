@@ -2,12 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
-=======
 use App\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
->>>>>>> andrew
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +20,6 @@ use Illuminate\Validation\ValidationException;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
-=======
 
 Route::get('/users', 'API\UserController@index');
 Route::post('/sanctum/token', function (Request $request) {
@@ -45,4 +40,3 @@ Route::post('/sanctum/token', function (Request $request) {
     return $user->createToken($request->device_name)->plainTextToken;
 });
 
->>>>>>> andrew
