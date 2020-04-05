@@ -20,7 +20,11 @@ Route::get('/', function () {
 Route::group([],function(){
 
     Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
-
+    
+    Route::get('/pharmacies/create','PharmacyController@create')->name('pharmacies.create');
+    
     Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
+
+    Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
 
 });
