@@ -10,7 +10,7 @@ class Pharmacy extends Model
         'name',
         'street_name',
         'building_number',
-        'owner_nat_id',
+        'owner_id',
         'area_id',
         'priority_area_id',
     ];

@@ -605,6 +605,7 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
     );
 
     public static $classMap = array (
+        'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Doctor' => __DIR__ . '/../..' . '/app/Doctor.php',
         'App\\Drug' => __DIR__ . '/../..' . '/app/Drug.php',
@@ -623,6 +624,7 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\StorePharmacyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StorePharmacyRequest.php',
         'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',
         'App\\Orders' => __DIR__ . '/../..' . '/app/Orders.php',
         'App\\Pharmacy' => __DIR__ . '/../..' . '/app/Pharmacy.php',

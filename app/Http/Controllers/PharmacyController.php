@@ -42,13 +42,17 @@ class PharmacyController extends Controller
 
     function store(StorePharmacyRequest $request)
     {
+        // dd($request);
         Pharmacy::create([
             'name' => $request->name,
             'street_name' => $request->street_name,
             'building_number' => $request->building_number,
-            'owner_nat_id' => $request->owner_nat_id,
+            // 'owner_id' => 1,
+            // 'area_id' => 1,
+            // 'priority_area_id' => 1,
+            'owner_id' => $request->owner_id,
             'area_id' => $request->area_id,
-            'priority_area_id' => $request->priority_area_id,
+            'area_id' => $request->priority_area_id,
         ]);
 
         return redirect()->route('pharmacies.index');

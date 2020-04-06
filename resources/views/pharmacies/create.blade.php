@@ -41,20 +41,20 @@
             <label class="control-label col-sm" for="users">Owner</label>
             <select class="form-control" id="users">
             @foreach($users as $user)
-                <option value={{$user->nat_id}}>{{$user->name}}</option>
+                <option value={{$user->owner_id}}>{{$user->name}}</option>
             @endforeach
             </select>
             <br>
             <label class="control-label col-sm" for="areas">Area</label>
             <select class="form-control" id="areas">
             @foreach($areas as $area)
-                <option value={{$area->area_id}}>{{$area->name}}</option>
+                <option value={{$area->id}}>{{$area->name}}</option>
             @endforeach
             </select>
             <label class="control-label col-sm" for="priority_area">Priority Area</label>
             <select class="form-control" id="areas">
             @foreach($areas as $area)
-                <option value={{$area->area_id}}>{{$area->name}}</option>
+                <option value={{$area->id}}>{{$area->name}}</option>
             @endforeach
             </select>
             <br>
