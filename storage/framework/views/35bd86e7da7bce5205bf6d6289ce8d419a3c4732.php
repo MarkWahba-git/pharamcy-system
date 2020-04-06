@@ -1,7 +1,7 @@
 <?php $__env->startSection('title', 'pharmacies'); ?>
 
 <?php $__env->startSection('content_header'); ?>
-<button type="button" class="btn btn-success">Add pharmacy</button>
+<a href="<?php echo e(route('pharmacies.create')); ?>" class="btn btn-success">Add pharmacy</a>
 <center><h2>Pharmacies</h2></center>
 <?php $__env->stopSection(); ?>
 
@@ -11,11 +11,7 @@
                     <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
-                    <!-- <th scope="col">Street Name</th>
-                    <th scope="col">Building Number</th> -->
                     <th scope="col">Owner National Id</th>
-                    <!-- <th scope="col">Area</th> -->
-                    <!-- <th scope="col">Priority Area</th> -->
                     <th scope="col">Actions</th>
                     </tr>
                 </thead>
