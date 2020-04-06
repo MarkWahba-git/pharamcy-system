@@ -55,7 +55,7 @@
               <tbody>
                 <tr>
                   <td>
-                  <select name="drug_name[]" id="select_drug_name" class="form-control input-lg "
+                  <select name="drug_name[]"  class="form-control input-lg select_drug_name "
                   >
                   @foreach($drugs_list as $drug)
                   <option value="{{ $drug -> drug_name }}">{{ $drug -> drug_name }}</option>
@@ -64,7 +64,7 @@
                   </td>
                   <!-- -------------------------------------------------->
                   <td>
-                  <select name="drug_type[]" id="select_drug_type" class="form-control input-lg "
+                  <select name="drug_type[]"  class="form-control input-lg select_drug_type"
                   >
                   @foreach($drugs_list as $drug)
                   <option value="{{ $drug -> drug_type }}">{{ $drug -> drug_type }}</option>
@@ -77,7 +77,7 @@
                   </td>
                   <!-- -------------------------------------------------->
                   <td>
-                  <select name="drug_unit_price[]" id="select_drug_unit_price" class="form-control input-lg "
+                  <select name="drug_unit_price[]"  class="form-control input-lg select_drug_unit_price "
                   >
                   @foreach($drugs_list as $drug)
                   <option value="{{ $drug -> drug_unit_price }}">{{ $drug -> drug_unit_price }}</option>
@@ -91,6 +91,7 @@
 
                   
                 </tr>
+                
               </tbody>
 
             </table>
@@ -104,34 +105,73 @@
   </div>
   <script type="text/javascript">
 $(document).ready(function() {
-$('#select_drug_name').select2(
+$('.select_drug_name').select2(
   {
     placeholder:'Drug Name',
     allowClear: true,
     tags: true
   }
 );
-$('#select_drug_type').select2(
+$('.select_drug_type').select2(
   {
     placeholder:'Drug Type',
     allowClear: true,
     tags: true
   }
 );
-$('#select_drug_unit_price').select2(
+$('.select_drug_unit_price').select2(
   {
     placeholder:'Drug Type',
     allowClear: true,
     tags: true
   }
 );
+$('.AddRow').on('click',function(){
+  addRow();
 
+});
+function addRow()
+{
+var tr =    '<tr>'+
+                  '<td>'+
+                  '<select name="drug_name[]"  class="form-control input-lg select_drug_name "'+
+                  '>'+
+                  '@foreach($drugs_list as $drug)'+
+                  '<option value="{{ $drug -> drug_name }}">{{ $drug -> drug_name }}</option>'+
+                  '@endforeach'+
+                 '</select>'+
+                  '</td>'+
+                  '<!-- -------------------------------------------------->'+
+                 '<td>'+
+                  '<select name="drug_type[]"  class="form-control input-lg select_drug_type"'+
+                  '>'+
+                  '@foreach($drugs_list as $drug)'+
+                  '<option value="{{ $drug -> drug_type }}">{{ $drug -> drug_type }}</option>'+
+                  '@endforeach'+
+                 '</select>'+
+                  '</td>'+
+                  '<!-- -------------------------------------------------->'+
+'                  <td>'+
+                  '<input type="text" name="drug_qty[]" class="form-control" placeholder="Quantity">'+
+                  '</td>'+
+                  '<!-- -------------------------------------------------->'+
+                 ' <td>'+
+                  '<select name="drug_unit_price[]"  class="form-control input-lg select_drug_unit_price "'+
+                  '>'+
+                  '@foreach($drugs_list as $drug)'+
+                  '<option value="{{ $drug -> drug_unit_price }}">{{ $drug -> drug_unit_price }}</option>'+
+                 ' @endforeach'+
+                 '</select>'+
+                 ' </td>'+
+                  '<!-- -------------------------------------------------->'+
+                  '<td>'+
+                   ' <a href="#" class="btn btn-danger remove "><i class="glyphicon glyphicon-remove"></i></a>'+
+                  '</td>'+
+                '</tr>';
+                var temp = '<tr><td><select name="drug_unit_price[]"  class="form-control input-lg select_drug_unit_price " </td></tr>';
+            $('tbody').append(tr    );
 
-
-
-
-
-
+}
 
 });
 </script>
