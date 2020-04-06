@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
+
 Route::group([],function(){
 
     Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
@@ -27,4 +31,17 @@ Route::group([],function(){
 
     Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
 
+});
+
+Route::group([],function(){
+
+    Route::get('/drugs','DrugController@index')->name('drugs.index');
+
+   Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
+   Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
+
+});
+
+Route::get('/', function () {
+    return view('welcome');
 });
