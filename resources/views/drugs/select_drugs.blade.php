@@ -13,18 +13,43 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
   <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  <style type="text/css">
+   .box{
+    width:600px;
+    margin: auto;
+    border:1px solid #ccc;
+   }
+  </style>
 </head>
 <body>
-  <div class="container">
-  <div class="form-group">
-  <label for="drugs">Select the Drug Name</label>
-  <select name="drug_id" id="select_drug_name" class="form-control">
-    @foreach($drugs as $drug)
-    <option value="{{ $drug->id }}">{{ $drug->drug_name }} </option>
-    @endforeach
-  </select>
-  </div>
-  
+  <div class="container box" >
+    <h3 align="center">Choose Drug details </h3>
+    <br>
+    <div class="form-group">
+    <label>Enter the Drug Name</label>
+      <select name="drug_name" id="select_drug_name" class="form-control input-lg "
+      data-dependent="drug_type">
+      @foreach($drugs_list as $drug)
+     <option value="{{ $drug -> drug_name }}">{{ $drug -> drug_name }}</option>
+     @endforeach
+    </select>
+    </div>
+    <br>
+    <div class="form-group">
+    <label>Enter the Drug Type</label>
+      <select name="drug_type" id="select_drug_type" class="form-control input-lg "
+      data-dependent="drug_type">
+      @foreach($drugs_list as $drug)
+     <option value="{{ $drug -> drug_type }}">{{ $drug -> drug_type }}</option>
+     @endforeach
+    </select>
+    </div>
+    <br>
+    <div class="form-group">
+    <label>Enter the Quantity</label>
+          <input type="text" name="select_drug_price" id="select_drug_price" class="form-control" placeholder="Quantity" />
+      </div>
+    
   </div>
 
 <script type="text/javascript">
@@ -33,8 +58,18 @@ $('#select_drug_name').select2(
   {
     placeholder:'Drug Name',
     allowClear: true,
+    tags: true
   }
 );
+$('#select_drug_type').select2(
+  {
+    placeholder:'Drug type',
+    allowClear: true,
+    tags: true
+  }
+);
+
+
 });
 
 </script>

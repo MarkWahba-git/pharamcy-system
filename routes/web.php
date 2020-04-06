@@ -38,6 +38,8 @@ Route::group([],function(){
    Route::get('/drugs/fetchdrugs','DrugController@fetchDrug')->name('drugs.fetchdrugs');
    Route::get('/drugs/deletedrugs','DrugController@deleteDrug')->name('drugs.deletedrugs');
    Route::get('/drugs/selectdrugs','DrugController@selectDrugs')->name('drugs.selectdrugs');
+   Route::post('/drugs/fetchlist','DrugController@fetchList')->name('drugs.fetchlist');
+   Route::get('/drugs/orderdrugs','DrugController@orderDrugs')->name('drugs.orderdrugs');
 });
 
 Route::get('/', function () {

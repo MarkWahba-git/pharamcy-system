@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Validator;
 use Illuminate\Http\Request;
 use App\Drug;
+use DB;
 use DataTables;
 class DrugController extends Controller
 {
@@ -95,9 +96,27 @@ class DrugController extends Controller
 
     function selectDrugs()
     {
-        $drugs = Drug::all();
-        return view('drugs.select_drugs',compact('drugs'));
+        $drugs_list = DB::table("drugs")
+                    ->groupBy("drug_name")
+                    ->get();
+        return view('drugs.select_drugs',compact('drugs_list'))->with(
+            'drugs_list', $drugs_list
+        );
+                        
+        
     }
+
+    function orderDrugs()
+    {
+        $drugs_list = DB::table("drugs")
+                    ->groupBy("drug_name")
+                    ->get();
+        return view('drugs.order_drugs',compact('drugs_list'))->with(
+            'drugs_list', $drugs_list
+        );
+       
+    }
+   
 }
 
 
