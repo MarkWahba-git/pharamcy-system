@@ -6633,6 +6633,8 @@
         ]
     },
     {
+<<<<<<< HEAD
+=======
         "name": "yajra/laravel-datatables",
         "version": "v1.5.0",
         "version_normalized": "1.5.0.0",
@@ -6933,6 +6935,7 @@
         ]
     },
     {
+>>>>>>> 1db345137adcfa1ab12f1cc00994e7869a5a3c8d
         "name": "yajra/laravel-datatables-oracle",
         "version": "v9.9.0",
         "version_normalized": "9.9.0.0",
@@ -7003,6 +7006,19 @@
             "datatables",
             "jquery",
             "laravel"
+<<<<<<< HEAD
+        ],
+        "funding": [
+            {
+                "url": "https://www.paypal.me/yajra",
+                "type": "custom"
+            },
+            {
+                "url": "https://www.patreon.com/yajra",
+                "type": "patreon"
+            }
+=======
+>>>>>>> 1db345137adcfa1ab12f1cc00994e7869a5a3c8d
         ]
     }
 ]
