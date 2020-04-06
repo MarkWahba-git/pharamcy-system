@@ -29,6 +29,18 @@ Route::group([],function(){
 
 });
 
+////// Doctor Crud Routes 
+
+Route::get('doctor-list', 'DoctorController@index');
+Route::get('doctor-list/{id}/edit', 'DoctorController@edit');
+Route::post('doctor-list/store', 'DoctorController@store');
+Route::get('doctor-list/delete/{id}', 'DoctorController@destroy');
+
+//////////////////////////////////////////////////////
+
+
+
+
 Route::group([],function(){
 
     Route::get('/drugs','DrugController@index')->name('drugs.index');
