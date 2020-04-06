@@ -92,6 +92,12 @@ class DrugController extends Controller
             echo 'Drug Deleted';
         }
     }
+
+    function selectDrugs()
+    {
+        $drugs = Drug::all();
+        return view('drugs.select_drugs',compact('drugs'));
+    }
 }
 
 

@@ -37,7 +37,7 @@ Route::group([],function(){
    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
    Route::get('/drugs/fetchdrugs','DrugController@fetchDrug')->name('drugs.fetchdrugs');
    Route::get('/drugs/deletedrugs','DrugController@deleteDrug')->name('drugs.deletedrugs');
-
+   Route::get('/drugs/selectdrugs','DrugController@selectDrugs')->name('drugs.selectdrugs');
 });
 
 Route::get('/', function () {
