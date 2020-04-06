@@ -54,6 +54,6 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('js'); ?>
-    <script> console.log('Hi!'); </script>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/marc/Desktop/ITI intake 40/php framwework-laravel/project/mark.wahba33-gmail.com/resources/views/pharmacies/show.blade.php ENDPATH**/ ?>

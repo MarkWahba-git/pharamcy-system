@@ -24,10 +24,26 @@ Route::get('/dashboard', function () {
 Route::group([],function(){
 
     Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
-
+    
+    Route::get('/pharmacies/create','PharmacyController@create')->name('pharmacies.create');
+    
     Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
 
+    Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
+
 });
+
+////// Doctor Crud Routes 
+
+Route::get('doctor-list', 'DoctorController@index');
+Route::get('doctor-list/{id}/edit', 'DoctorController@edit');
+Route::post('doctor-list/store', 'DoctorController@store');
+Route::get('doctor-list/delete/{id}', 'DoctorController@destroy');
+
+//////////////////////////////////////////////////////
+
+
+
 
 Route::group([],function(){
 
@@ -45,3 +61,7 @@ Route::group([],function(){
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
