@@ -15,13 +15,10 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('doctor_id');
-            $table->foreign('doctor_id')->references('id')->on('doctors');
-            $table->boolean('is_insured');
             $table->string('status');
             $table->unsignedBigInteger('pharmacy_id');
-            $table->foreign('pharmacy_id')->references('id')->on('pharmacies');
             $table->unsignedBigInteger('medicine_id');
             $table->timestamps();
         });

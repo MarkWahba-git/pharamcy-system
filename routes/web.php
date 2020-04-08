@@ -38,3 +38,26 @@ Route::group([],function(){
    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
 
 });
+Route::group([],function(){
+
+    Route::get('/orders','OrdersController@index')->name('orders.index');
+    Route::get('/orders/getdata', 'OrdersController@getData')->name('orders.getdata');
+
+
+
+
+
+
+});
+Route::group([],function(){
+
+  
+    Route::get('/doctorstab','DoctorTabController@index')->name('doctorstab.index');
+
+    Route::delete('/doctorstab/{doctor}','DoctorTabController@destroy')->name('doctorstab.destroy');
+    Route::get('/doctorstab/{doctor}/edit','DoctorTabController@edit')->name('doctorstab.edit');
+    Route::put('/doctorstab/{doctor}','DoctorTabController@update')->name('doctorstab.update');
+    Route::get('doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image');
+
+    
+});

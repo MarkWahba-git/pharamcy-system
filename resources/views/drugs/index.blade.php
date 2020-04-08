@@ -34,6 +34,7 @@
        </table>
     </div>
   </div>
+  
   <div id="drugModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -68,8 +69,10 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function() {
+
   $('#add_drug_btn').click(function(){
         $('#drugModal').modal('show');
         $('#add_drug_form')[0].reset();
@@ -134,6 +137,7 @@ $('#drug_table').DataTable({
 
 });
 
+
 </script>
 </body>
-
+</html>

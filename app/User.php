@@ -16,8 +16,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','avatar','nat_id','updated_at','created_at',
+        'role','street_name','area_id','flat_number','floor_number',
+        'building_number'
     ];
+   
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +39,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    protected $primaryKey = 'nat_id';
+    public function getImageUrl(){
+        return asset($this->avatar);
+    }
+  
+
 }

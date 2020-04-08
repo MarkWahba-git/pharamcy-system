@@ -19,7 +19,7 @@ class CreateTablePharmacies extends Migration
             $table->string('street_name');
             $table->integer('building_number');
             $table->unsignedBigInteger('owner_nat_id');
-            $table->foreign('owner_nat_id')->references('nat_id')->on('users');
+            $table->foreign('owner_nat_id')->references('nat_id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('area_id');
             $table->foreign('area_id')->references('id')->on('areas');
         });
