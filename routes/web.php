@@ -61,7 +61,6 @@ Route::group([],function(){
 Route::get('/', function () {
     return view('welcome');
 });
-<<<<<<< HEAD
 Route::group([],function(){
 
     Route::get('/orders','OrdersController@index')->name('orders.index');
@@ -85,9 +84,7 @@ Route::group([],function(){
 
     
 });
-=======
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef

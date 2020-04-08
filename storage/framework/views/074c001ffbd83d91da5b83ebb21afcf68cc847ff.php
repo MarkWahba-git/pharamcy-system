@@ -53,7 +53,7 @@
             {data: 'is_insured', name:'orders.is_insured'},
             {data: 'status', name: 'orders.status'},
             
-           {data:'name',name:`$doctors->name`}
+          
 
             
         ]

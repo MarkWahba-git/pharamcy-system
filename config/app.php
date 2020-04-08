@@ -175,11 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
-<<<<<<< HEAD
         Intervention\Image\ImageServiceProvider::class,
         
-=======
->>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
 
     ],
 
@@ -233,11 +230,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-<<<<<<< HEAD
         'Image'     => Intervention\Image\Facades\Image::class,
-=======
 
->>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
     ],
 
 ];

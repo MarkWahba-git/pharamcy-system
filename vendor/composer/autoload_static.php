@@ -602,14 +602,8 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
     public static $classMap = array (
         'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
-<<<<<<< HEAD
-        'App\\DataTables\\MyOrderDatatable' => __DIR__ . '/../..' . '/app/DataTables/MyOrderDatatable.php',
-=======
         'App\\Doctor' => __DIR__ . '/../..' . '/app/Doctor.php',
->>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
-        'App\\Drug' => __DIR__ . '/../..' . '/app/Drug.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
