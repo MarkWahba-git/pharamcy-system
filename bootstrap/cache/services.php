@@ -28,6 +28,8 @@
     24 => 'Fruitcake\\Cors\\CorsServiceProvider',
     25 => 'Intervention\\Image\\ImageServiceProvider',
     26 => 'JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider',
+    25 => 'JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider',
+    26 => 'Laravel\\Sanctum\\SanctumServiceProvider',
     27 => 'Laravel\\Tinker\\TinkerServiceProvider',
     28 => 'Laravel\\Ui\\UiServiceProvider',
     29 => 'Collective\\Html\\HtmlServiceProvider',
@@ -44,7 +46,10 @@
     40 => 'App\\Providers\\EventServiceProvider',
     41 => 'App\\Providers\\RouteServiceProvider',
     42 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+<<<<<<< HEAD
     43 => 'Intervention\\Image\\ImageServiceProvider',
+=======
+>>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
   ),
   'eager' => 
   array (
@@ -61,8 +66,13 @@
     10 => 'Facade\\Ignition\\IgnitionServiceProvider',
     11 => 'Fideloper\\Proxy\\TrustedProxyServiceProvider',
     12 => 'Fruitcake\\Cors\\CorsServiceProvider',
+<<<<<<< HEAD
     13 => 'Intervention\\Image\\ImageServiceProvider',
     14 => 'JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider',
+=======
+    13 => 'JeroenNoten\\LaravelAdminLte\\AdminLteServiceProvider',
+    14 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+>>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
     15 => 'Laravel\\Ui\\UiServiceProvider',
     16 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
     17 => 'Carbon\\Laravel\\ServiceProvider',
@@ -77,7 +87,10 @@
     26 => 'App\\Providers\\EventServiceProvider',
     27 => 'App\\Providers\\RouteServiceProvider',
     28 => 'Yajra\\DataTables\\DataTablesServiceProvider',
+<<<<<<< HEAD
     29 => 'Intervention\\Image\\ImageServiceProvider',
+=======
+>>>>>>> 5ed1083868c4a5e9766b974737219cce1925c7ef
   ),
   'deferred' => 
   array (

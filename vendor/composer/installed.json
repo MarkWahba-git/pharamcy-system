@@ -1682,6 +1682,68 @@
         ]
     },
     {
+        "name": "laravel/sanctum",
+        "version": "v2.1.0",
+        "version_normalized": "2.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/sanctum.git",
+            "reference": "f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/sanctum/zipball/f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a",
+            "reference": "f3d45b92d4187ea5eb37f82c1a0dce23c9b0b17a",
+            "shasum": ""
+        },
+        "require": {
+            "ext-json": "*",
+            "illuminate/contracts": "^6.9|^7.0",
+            "illuminate/database": "^6.9|^7.0",
+            "illuminate/support": "^6.9|^7.0",
+            "php": "^7.2"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.0",
+            "orchestra/testbench": "^4.0|^5.0",
+            "phpunit/phpunit": "^8.0"
+        },
+        "time": "2020-03-24T16:01:07+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            },
+            "laravel": {
+                "providers": [
+                    "Laravel\\Sanctum\\SanctumServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Laravel\\Sanctum\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylor@laravel.com"
+            }
+        ],
+        "description": "Laravel Sanctum provides a featherweight authentication system for SPAs and simple APIs.",
+        "keywords": [
+            "auth",
+            "laravel",
+            "sanctum"
+        ]
+    },
+    {
         "name": "laravel/tinker",
         "version": "v2.3.0",
         "version_normalized": "2.3.0.0",
@@ -1948,6 +2010,20 @@
             "markdown",
             "md",
             "parser"
+        ],
+        "funding": [
+            {
+                "url": "https://github.com/colinodell",
+                "type": "github"
+            },
+            {
+                "url": "https://www.patreon.com/colinodell",
+                "type": "patreon"
+            },
+            {
+                "url": "https://tidelift.com/funding/github/packagist/league%2fcommonmark",
+                "type": "tidelift"
+            }
         ]
     },
     {
