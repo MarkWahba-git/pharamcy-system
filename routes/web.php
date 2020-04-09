@@ -63,7 +63,25 @@ Route::group([],function(){
     Route::get('/users/fetchUsers','UserController@fetchUsers')->name('users.fetchUsers');
     Route::get('/users/removeUser','UserController@removeUser')->name('users.removeUser');
 });
-//========================================================================================
+//============================================================================================
+
+/* **Orders Routes** */
+Route::group([],function(){
+    Route::get('/orders','OrdersController@index')->name('orders.index');
+    Route::get('/orders/getdata', 'OrdersController@getData')->name('orders.getdata');
+});
+//============================================================================================
+
+/* **Doctors Routes** */
+Route::group([],function(){
+    Route::get('/doctorstab','DoctorTabController@index')->name('doctorstab.index');
+    Route::delete('/doctorstab/{doctor}','DoctorTabController@destroy')->name('doctorstab.destroy');
+    Route::get('/doctorstab/{doctor}/edit','DoctorTabController@edit')->name('doctorstab.edit');
+    Route::put('/doctorstab/{doctor}','DoctorTabController@update')->name('doctorstab.update');
+    Route::get('doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image'); 
+});
+//============================================================================================
+
 
 Auth::routes();
 

@@ -18,18 +18,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name',
-        'email', 
-        'password',
-        'role',
-        'street_name',
-        'building_number',
-        'floor_number',
-        'flat_number',
-        'area_id',
-        'nat_id',
+    protected $guarded = [
+
     ];
+   
 
     /**
      * The attributes that should be hidden for arrays.
@@ -48,4 +40,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+    public function getImageUrl(){
+        return asset($this->avatar);
+    }
+  
+
 }
