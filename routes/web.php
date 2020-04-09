@@ -45,14 +45,26 @@ Route::group([],function(){
     Route::get('/drugs','DrugController@index')->name('drugs.index');
     Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
     Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
+    Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
+    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
+    Route::get('/drugs/fetchdrugs','DrugController@fetchDrug')->name('drugs.fetchdrugs');
+    Route::get('/drugs/deletedrugs','DrugController@deleteDrug')->name('drugs.deletedrugs');
+    Route::get('/drugs/selectdrugs','DrugController@selectDrugs')->name('drugs.selectdrugs');
+    Route::post('/drugs/fetchlist','DrugController@fetchList')->name('drugs.fetchlist');
+    Route::get('/drugs/orderdrugs','DrugController@orderDrugs')->name('drugs.orderdrugs');
 });
 //=======================================================================================
 
 /* **User Routes** */ 
 Route::group([],function(){
-    Route::get('/users', 'UserController@index');
-    Route::get('/users/{user}/edit', 'UserController@edit');
-    Route::post('/users/create', 'UserController@store');
-    Route::get('/users/{user}', 'UserController@destroy');
+    Route::get('/users','UserController@index')->name('users.index');
+    Route::get('/users/getUsers','UserController@getUsers')->name('users.getUsers');
+    Route::post('/users/postUsers','UserController@postUsers')->name('users.postUsers');
+    Route::get('/users/fetchUsers','UserController@fetchUsers')->name('users.fetchUsers');
+    Route::get('/users/removeUser','UserController@removeUser')->name('users.removeUser');
 });
 //========================================================================================
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

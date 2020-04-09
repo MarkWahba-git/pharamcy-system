@@ -1,191 +1,215 @@
-<?php $__env->startSection('title', 'Manage Users'); ?>
-
-<?php $__env->startSection('content_header'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
-<center><h2>Manage Users</h2></center>
-<?php $__env->stopSection(); ?>
-
-<?php $__env->startSection('content'); ?>
-<a href="javascript:void(0)" class="btn btn-info ml-3" id="add_user">Add User</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<button type="button" name="add" id="add_user" class="btn btn-success btn-sm">Add User</button>
 <br><br>
-  
-<table class="table table-bordered table-striped" id="laravel_datatable">
-   <thead>
-      <tr>
-         <th>National ID</th>
-         <th>Name</th>
-         <th>Email</th>
-         <th>Password</th>
-         <th>Role</th>
-         <th>Street Name</th>
-         <th>Building Number</th>
-         <th>Floor Number</th>
-         <th>Flat Number</th>
-         <th>Area</th>
-      </tr>
-   </thead>
-</table>
+<div> 
+    <table class="table table-bordered table-striped" id="user_table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>Street Name</th>
+            <th>Building Number</th>
+            <th>Floor Number</th>
+            <th>Flat Number</th>
+            <th>Area</th>
+            <th>National ID</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    </table>
 </div>
-  
-<div class="modal fade" id="ajax-user-modal" aria-hidden="true">
-<div class="modal-dialog">
-<div class="modal-content">
-    <div class="modal-header">
-        <h4 class="modal-title" id="userCrudModal"></h4>
-    </div>
-    <div class="modal-body">
-        <form id="userForm" name="userForm" class="form-horizontal">
-           <input type="hidden" name="user_id" id="user_id">
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">Title</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="title" name="title" placeholder="Enter Tilte" value="" maxlength="50" required="">
-                </div>
-            </div> 
-            <div class="form-group">
-                <label for="name" class="col-sm-2 control-label">user Code</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="user_code" name="user_code" placeholder="Enter Tilte" value="" maxlength="50" required="">
-                </div>
-            </div>
-  
-            <div class="form-group">
-                <label class="col-sm-2 control-label">Description</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description" value="" required="">
-                </div>
-            </div>
-            <div class="col-sm-offset-2 col-sm-10">
-             <button type="submit" class="btn btn-primary" id="btn-save" value="create">Save changes
-             </button>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-         
-    </div>
-</div>
-</div>
-</div>
-<?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('css'); ?>
-    <link rel="stylesheet" href="/css/admin_custom.css">
-<?php $__env->stopSection(); ?>
 
-<?php $__env->startSection('js'); ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<div id="userModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" id="user_form">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add User</h4>
+                </div>
+                <div class="modal-body">
+                    <?php echo e(csrf_field()); ?>
 
-<script>
-var SITEURL = '<?php echo e(URL::to('')); ?>';
- $(document).ready( function () {
-   $.ajaxSetup({
-      headers: {
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-  });
-  $('#laravel_datatable').DataTable({
-         processing: true,
-         serverSide: true,
-         ajax: {
-          url: SITEURL + "user-list",
-          type: 'GET',
-         },
-         columns: [
-                  {data: 'id', name: 'id', 'visible': false},
-                  {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false,searchable: false},
-                  { data: 'title', name: 'title' },
-                  { data: 'user_code', name: 'user_code' },
-                  { data: 'description', name: 'description' },
-                  { data: 'created_at', name: 'created_at' },
-                  {data: 'action', name: 'action', orderable: false},
-               ],
-        order: [[0, 'desc']]
-      });
- 
- /*  When user click add user button */
-    $('#create-new-user').click(function () {
-        $('#btn-save').val("create-user");
-        $('#user_id').val('');
-        $('#userForm').trigger("reset");
-        $('#userCrudModal').html("Add New user");
-        $('#ajax-user-modal').modal('show');
+                    <span id="form_output"></span>
+                    <div class="form-group">
+                        <label>Enter Name</label>
+                        <input type="text" name="name" id="name" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Email</label>
+                        <input type="text" name="email" id="email" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Password</label>
+                        <input type="text" name="password" id="password" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Role</label>
+                        <input type="text" name="role" id="role" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Street Name</label>
+                        <input type="text" name="street_name" id="street_name" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Building Number</label>
+                        <input type="text" name="building_number" id="building_number" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Floor Number</label>
+                        <input type="text" name="floor_number" id="name" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Flat Number</label>
+                        <input type="text" name="flat_number" id="name" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Area</label>
+                        <input type="text" name="area" id="area" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter National ID</label>
+                        <input type="text" name="nat_id" id="nat_id" class="form-control"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="user_id" value=""/>
+                    <input type="hidden" name="button_action" id="button_action" value="insert"/>
+                    <input type="submit" name="submit" id="action" value="Add" class="btn btn-info"/>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#user_table').DataTable({
+            "processing" : true,
+            "serverSide" : true,
+            "ajax"       : "<?php echo e(route('users.getUsers')); ?>",
+            "columns"    : [
+                { "data" : "name" },
+                { "data" : "email" },
+                { "data" : "password" },
+                { "data" : "role" },
+                { "data" : "street_name" },
+                { "data" : "building_number" },
+                { "data" : "floor_number" },
+                { "data" : "flat_number" },
+                { "data" : "area_id" },
+                { "data" : "nat_id" },
+                { "data" : "action" , orderable:false , searchable:false },
+            ],
+        });
+
+        $('#add_user').click(function(){
+            $('#userModal').modal('show');
+            $('#user_form')[0].reset();
+            $('#form_output').html('');
+            $('#button_action').val('insert');
+            $('#action').val('Add');
+        });
+
+        $('#user_form').on('submit',function(event){
+            event.preventDefault();
+            var form_data = $(this).serialize();
+            $.ajax({
+                url : '<?php echo e(route("users.postUsers")); ?>',
+                method : "POST",
+                data : form_data,
+                dataType : "json",
+                success:function(data)
+                {
+                    if(data.error.length > 0)
+                    {
+                        var error_html = '';
+                        for(var count=0 ; count<data.error.length ; count++)
+                        {
+                            error_html += '<div class="alert alert-danger">'+data.error[count]+'</div>';
+                        }
+                        $('#form_output').html(error_html);
+                    }
+                    else
+                    {
+                        $('#form_output').html(data).success;
+                        $('#user_form')[0].reset();
+                        $('#action').val('Add');
+                        $('.modal-title').text('Add User');
+                        $('#button_action').val('insert');
+                        $('#user_table').DataTable().ajax.reload();
+                    }
+                }
+            })
+        });
+
+        $(document).on('click','.edit',function(){
+            var id = $(this).attr("id");
+            $.ajax({
+                url         : "<?php echo e(route('users.fetchUsers')); ?>",
+                method      : 'get',
+                data        : {id:id},
+                dataType    : 'json',
+                success:function(data)
+                {
+                    $('#name').val(data.name);
+                    $('#email').val(data.email);
+                    $('#password').val(data.password);
+                    $('#role').val(data.role);
+                    $('#street_name').val(data.street_name);
+                    $('#building_number').val(data.building_number);
+                    $('#floor_number').val(data.floor_number);
+                    $('#flat_number').val(data.flat_number);
+                    $('#area_id').val(data.area_id);
+                    $('#nat_id').val(data.nat_id);
+                    $('#user_id').val(id);
+                    $('#userModal').modal('show');
+                    $('#action').val('Edit');
+                    $('.modal-title').text('Edit User');
+                    $('#button_action').val('update');
+                }
+            })
+        });
+
+        $(document).on('click','delete',function(){
+            var id = $(this).attr('id');
+            if(confirm("Are you sure you want to Delete this User?"))
+            {
+                $.ajax({
+                    url         : "<?php echo e(route('users.removeUser')); ?>",
+                    method      : "get",
+                    data        : {id:id},
+                    success:function(data)
+                    {
+                        alert(data);
+                        $('#user_table').DataTable.ajax.reload();   
+                    }
+                })
+            }
+            else
+            {
+                return false;
+            }
+        });
     });
-  
-   /* When click edit user */
-    $('body').on('click', '.edit-user', function () {
-      var user_id = $(this).data('id');
-      $.get('user-list/' + user_id +'/edit', function (data) {
-         $('#title-error').hide();
-         $('#user_code-error').hide();
-         $('#description-error').hide();
-         $('#userCrudModal').html("Edit user");
-          $('#btn-save').val("edit-user");
-          $('#ajax-user-modal').modal('show');
-          $('#user_id').val(data.id);
-          $('#title').val(data.title);
-          $('#user_code').val(data.user_code);
-          $('#description').val(data.description);
-      })
-   });
- 
-    $('body').on('click', '#delete-user', function () {
-  
-        var user_id = $(this).data("id");
-        
-        if(confirm("Are You sure want to delete !")){
-          $.ajax({
-              type: "get",
-              url: SITEURL + "user-list/delete/"+user_id,
-              success: function (data) {
-              var oTable = $('#laravel_datatable').dataTable(); 
-              oTable.fnDraw(false);
-              },
-              error: function (data) {
-                  console.log('Error:', data);
-              }
-          });
-        }
-    }); 
-   
-   });
-  
-if ($("#userForm").length > 0) {
-      $("#userForm").validate({
-  
-     submitHandler: function(form) {
-  
-      var actionType = $('#btn-save').val();
-      $('#btn-save').html('Sending..');
-       
-      $.ajax({
-          data: $('#userForm').serialize(),
-          url: SITEURL + "user-list/store",
-          type: "POST",
-          dataType: 'json',
-          success: function (data) {
-  
-              $('#userForm').trigger("reset");
-              $('#ajax-user-modal').modal('hide');
-              $('#btn-save').html('Save Changes');
-              var oTable = $('#laravel_datatable').dataTable();
-              oTable.fnDraw(false);
-               
-          },
-          error: function (data) {
-              console.log('Error:', data);
-              $('#btn-save').html('Save Changes');
-          }
-      });
-    }
-  })
-}
-</script> 
-<?php $__env->stopSection(); ?>
-<?php echo $__env->make('adminlte::page', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /home/marc/Desktop/pharmacy-system/pharamcy-system/resources/views/users/index.blade.php ENDPATH**/ ?>
+</script>
+</body>
+</html><?php /**PATH /home/marc/Desktop/pharmacy-system/pharamcy-system/resources/views/users/index.blade.php ENDPATH**/ ?>
