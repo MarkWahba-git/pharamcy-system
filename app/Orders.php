@@ -14,7 +14,8 @@ class Orders extends Model
         'is_insured',
         'status',
         'pharmacy_id',
-        'medicine_id'
+        'medicine_id',
+        'created_at'
     ];
     public function doctor(){
         return $this->belongsTo('App\User');

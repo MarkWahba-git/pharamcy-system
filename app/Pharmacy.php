@@ -14,11 +14,12 @@ class Pharmacy extends Model
         'owner_nat_id',
         'area_id',
         'priority_area_id',
+        'created_at'
     ];
 
-    public function user()
+    public function doctor()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Doctor');
     }
 
     public function area()

@@ -24,48 +24,66 @@
   <div class="row">
         <table class="table table-dark">
         <thead>
-            <tr>
-            <th scope="col">name</th>
-            <th scope="col">created at</th>
-            <th scope="col">image</th>
-            <th scope="col">email</th>
-            <th scope="col">national id</th>
-            <th scope="col">is banned</th>
-            <th scope="col">action</th>
+            <tr class="text-center">
+            <th scope="col" >Name</th>
+            <th scope="col" >Created at</th>
+            <th scope="col" >Image</th>
+            <th scope="col" >Email</th>
+            <th scope="col" >National id</th>
+            <th scope="col" >Is Banned</th>
+            <th scope="col" >Action</th>
             </tr>
         </thead>
         <tbody>
         <?php $__currentLoopData = $doctors; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $doctor): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <tr>
-            <th scope="row"><?php echo e($doctor->name); ?></th>
-            <td><?php echo e($doctor->created_at->todatestring()); ?></td>
-            <td>
-            <img src="doctorstab/fetch_image/<?php echo e($doctor->nat_id); ?>"  class="img-thumbnail" width="75" />
+            <tr class="text-center">
+            <td scope="row"><?php echo e($doctor->name); ?></td>
+            
+            <td><?php echo e($doctor->created_at->toDateString()); ?></td>
+                <td>
+                <img src="doctorstab/fetch_image/<?php echo e($doctor->id); ?>" class="img-thumbnail" width="75" />
 
-            </td>
-            <td><?php echo e($doctor->email); ?></td> 
-            <td><?php echo e($doctor->nat_id); ?></td> 
-            <td><?php echo e($doctor->is_banned==1 ?'un banned':'banned'); ?></td> 
-            <td>
+                </td>
+                <td><?php echo e($doctor->email); ?></td> 
+                <td><?php echo e($doctor->nat_id); ?></td> 
+                <td><?php echo e($doctor->is_banned==1 ?'un banned':'banned'); ?></td> 
+                <td>
                 <div class="row">
+                <?php if($doctor->is_banned==1): ?>
                    
-                    <div class="col-2 mr-4">
-                    <a href="<?php echo e(route('doctorstab.edit',$doctor->nat_id)); ?>" class="btn btn-primary ">Edit</a>
-                    </div>
-                    <div class="col-2">
-                    <form  action="<?php echo e(route('doctorstab.destroy',$doctor->nat_id)); ?>" method="POST"> 
-                            
-                    <?php echo csrf_field(); ?> <?php echo method_field('delete'); ?><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure that you want to delete this doctor ?')">Delete </button>
-                    </form>
-       
-        </div>
-        
-       
-      </div>
-        
-       
-      </td>
-   
+                <form action="<?php echo e(route('doctorstab.ban',$doctor->id)); ?>" method="POST"> 
+                 <?php echo csrf_field(); ?> <?php echo method_field('PUT'); ?>
+                <div class="col-2 mr-1">
+
+                <input  type="hidden" class="btn btn-primary" name="is_banned" value="0">
+
+                <input  type="submit" class="btn btn-primary" value="Bann">
+
+                </div>
+                </form>
+                <?php else: ?>
+                <form action="<?php echo e(route('doctorstab.ban',$doctor->id)); ?>" method="POST">
+
+                 <?php echo csrf_field(); ?> <?php echo method_field('PUT'); ?>
+                <div class="col-2 mr-1">
+                <input  type="hidden" class="btn btn-primary" name="is_banned" value="1">
+
+                <input  type="submit" class="btn btn-primary" value="un Bann">
+
+                </div>
+                </form>
+                <?php endif; ?>
+                <div class="col-2 mr-3">
+                <a href="<?php echo e(route('doctorstab.edit',$doctor->id)); ?>" class="btn btn-primary ">Edit</a>
+                </div>
+                <div class="col-2">
+                <form action="<?php echo e(route('doctorstab.destroy',$doctor->id)); ?>" method="POST"> 
+                <?php echo csrf_field(); ?> <?php echo method_field('delete'); ?><button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure that you want to delete this doctor ?')">Delete </button>
+                </form>
+                </div>
+                </div>
+                </td>
+            </tr>
     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>        
         </tbody>
         </table>
