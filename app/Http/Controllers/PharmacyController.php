@@ -5,12 +5,20 @@ use Illuminate\Http\Request;
 use App\Pharmacy;
 use DataTables;
 use Validator;
+use App\User;
+use App\Area;
 
 class PharmacyController extends Controller
 {
     public function index()
     {
-        return view('pharmacies.index');
+        $users = User::all();
+        $areas = Area::all();
+
+        return view('pharmacies.index',[
+            'users' => $users,
+            'areas' => $areas,
+        ]);
     }
 
     public function getPharmacies()
@@ -22,7 +30,7 @@ class PharmacyController extends Controller
             'owner_id',
             'area_id',
         );
-        return Datatables::of($pharmacies)->make(true)
+        return Datatables::of($pharmacies)
             ->addColumn('action',function($pharmacy){
                 return '<a href="#" class="btn btn-xs btn-primary edit" id="'.$pharmacy->id.'">
                         <i class="glyphicon glyphicon-edit"></i> Edit</a>

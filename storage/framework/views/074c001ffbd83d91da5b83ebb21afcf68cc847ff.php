@@ -16,6 +16,8 @@
      <br />
      <h3 align="center">Orders</h3>
      <br />
+    
+     <br>
      <div align="right">
      <button type="button" name="add_order_btn" id="add_order_btn" class="btn btn-success btn-sm">Add Order</button>
      </div>
@@ -120,9 +122,6 @@
 $(document).ready(function() {
 
 
-
-
-    /////////
     $('#add_order_btn').click(function(){
         $('#orderModal').modal('show');
         $('#order_form')[0].reset();
@@ -130,12 +129,8 @@ $(document).ready(function() {
         $('#button_action').val('insert');
         $('#action').val('Add');
     });
-    ////////
+    
 
-
-  
-
-    ////////////////////////////////////////////////////////////
      $('#order_table').DataTable({
         "processing": true,
         "serverSide": true,
@@ -152,7 +147,6 @@ $(document).ready(function() {
         ]
      });
    
-///////////////////////////////////////////////////////////////////////
 $('#order_form').on('submit', function(event){
           event.preventDefault();
         var form_data = $(this).serialize();
@@ -231,6 +225,23 @@ $('#order_form').on('submit', function(event){
             return false;
         }
     }); 
+
+    $(document).on('click', '.adddrugs', function(){
+        var id = $(this).attr('id');
+        
+            $.ajax({
+                url:"<?php echo e(route('drugs.orderdrugs')); ?>",
+                mehtod:"POST",
+                data:{id:id},
+                success:function(data)
+                {
+                    alert(data);
+                    $('#order_table').DataTable().ajax.reload();
+                }
+            })
+        
+    }); 
+    
 
     
 });
