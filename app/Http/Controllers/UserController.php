@@ -16,24 +16,24 @@ class UserController extends Controller
     public function getUsers()
     {
         $users = User::select(
+            'nat_id',
             'name',
             'email',
+            'dob',
+            'gender',
+            'phone_number',
             'password',
             'role',
-            'street_name',
-            'building_number',
-            'floor_number',
-            'flat_number',
-            'area_id',
-            'nat_id',
+            'avatar',
+            'is_banned'
         );
-        return Datatables::of($users)->make(true)
+        return Datatables::of($users)
             ->addColumn('action',function($user){
                 return '<a href="#" class="btn btn-xs btn-primary edit" id="'.$user->id.'">
                         <i class="glyphicon glyphicon-edit"></i> Edit</a>
                         <a href="#" class="btn btn-xs btn-danger delete"
                         id="'.$user->id.'"><i class="glyphicon glyphicon-remove">
-                        </i>Delete</a>';                  
+                        </i>Delete</a>';
             })
             ->make(true);
     }
@@ -41,7 +41,6 @@ class UserController extends Controller
     public function postUsers(Request $request)
     {
         $validation = Validator::make($request->all(),[
-            'avatar'            => 'required',
             'nat_id'            => 'required',
             'name'              => 'required',
             'email'             => 'required',
@@ -50,6 +49,7 @@ class UserController extends Controller
             'phone_number'      => 'required',
             'password'          => 'required',
             'role'              => 'required',
+            'avatar'            => 'required',
             'is_banned'         => 'required',
         ]);
 
@@ -66,17 +66,16 @@ class UserController extends Controller
         {
             if($request->get('button_action') == "insert")
             {
-                // User::create($validation);
                 $user = new User([
                     'nat_id'            => $request->get('nat_id'),
-                    'avatar'            => $request->get('avatar'),
                     'name'              => $request->get('name'),
                     'email'             => $request->get('email'),
                     'dob'               => $request->get('dob'),
                     'gender'            => $request->get('gender'),
                     'phone_number'      => $request->get('phone_number'),
-                    'password'          => $request->get('passwod'),
+                    'password'          => $request->get('password'),
                     'role'              => $request->get('role'),
+                    'avatar'            => $request->get('avatar'),
                     'is_banned'         => $request->get('is_banned'),
                 ]);
                 $user->save();
@@ -86,7 +85,6 @@ class UserController extends Controller
             if($request->get('button_action') == 'update')
             {
                 $user = User::find($request->get('user_id'));
-                $user->avatar           = $request->get('avatar');
                 $user->nat_id           = $request->get('nat_id');
                 $user->name             = $request->get('name');
                 $user->email            = $request->get('email');
@@ -95,6 +93,7 @@ class UserController extends Controller
                 $user->phone_number     = $request->get('phone_number');
                 $user->password         = $request->get('password');
                 $user->role             = $request->get('role');
+                $user->avatar           = $request->get('avatar');
                 $user->is_banned        = $request->get('is_banned');
                 $user->save();
                 $success_output = '<div class="alert alert-success">User Updated</div>';
@@ -120,6 +119,7 @@ class UserController extends Controller
             'phone_number'      =>  $user->phone_number,
             'password'          =>  $user->password,
             'role'              =>  $user->role,
+            'avatar'            =>  $user->avatar,
             'is_banned'         =>  $user->is_banned,
         );
         echo json_encode($output);
@@ -132,6 +132,5 @@ class UserController extends Controller
         {
             echo 'User Deleted';
         }
-    }
-    
+    }   
 }

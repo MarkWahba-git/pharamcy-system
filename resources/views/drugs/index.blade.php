@@ -38,7 +38,9 @@
   <div id="drugModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
+        
             <form method="post" id="add_drug_form">
+            
                 <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                    <h4 class="modal-title">Add Drug</h4>
@@ -66,7 +68,10 @@
                     <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
+                 
             </form>
+             
+
         </div>
     </div>
 </div>
