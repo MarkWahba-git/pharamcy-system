@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.landing');
 });
 
 Route::get('/dashboard', function () {
@@ -55,6 +55,13 @@ Route::group([],function(){
     Route::get('/drugs/orderdrugs','DrugController@orderDrugs')->name('drugs.orderdrugs');
 });
 //=======================================================================================
+/** Item Routes **/
+Route::group([],function(){
+    Route::get('/drugs/orderdrugs/{order_id}/','ItemController@orderDrugs')->name('drugs.orderdrugs');
+    Route::post('/drugs/store/{order_id}/','ItemController@store')->name('drugs.store');
+    
+});
+//========================================================================
 
 /* **User Routes** */ 
 Route::group([],function(){
