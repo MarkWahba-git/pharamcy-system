@@ -66,10 +66,10 @@
                         <div class="form-group">
                             <label>Choose Gender</label>
                             <br>
-                            <input type="radio" name="gender" id="male" />
+                            <input type="radio" name="gender" id="male" value="Male" />
                             <label for="male">Male</label>
                             <br>
-                            <input type="radio" name="gender" id="female" />
+                            <input type="radio" name="gender" id="female" value="Female" />
                             <label for="female">Female</label>
                         </div>
                         <div class="form-group">
@@ -95,10 +95,10 @@
                         <div class="form-group">
                             <label>Banned or Ubanned</label>
                             <br>
-                            <input type="radio" name="is_banned" id="1" />
+                            <input type="radio" name="is_banned" id="1" value="Banned"/>
                             <label for="1">Banned</label>
                             <br>
-                            <input type="radio" name="is_banned" id="0" />
+                            <input type="radio" name="is_banned" id="0" value="Unbanned"/>
                             <label for="0">Unbanned</label>                    
                         </div>
                     </div>
