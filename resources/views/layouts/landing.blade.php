@@ -208,7 +208,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('ajaxAreas') }}" class="nav-link">
+                <a href="/ajaxAreas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Areas</p>
                 </a>
