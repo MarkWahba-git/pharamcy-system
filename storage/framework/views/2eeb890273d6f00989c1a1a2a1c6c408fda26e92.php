@@ -38,37 +38,19 @@
       <input name="email" type="email" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-      <label >national Id</label>
-      <input name="nat_id" type="number" class="form-control" aria-describedby="emailHelp">
+      <label >Image</label>
+      <input name="image" type="file" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-      <label >Is Banned</label>
-        <select name="is_banned" id="is_banned">
-          <option value="1">banned</option>
-          <option value="0">not banned</option>
-        </select>
+      <label >National Id</label>
+      <input name="nat_id" type="text" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-      
-      <input name="area_id" type="hidden" value="1" class="form-control" aria-describedby="emailHelp">
+      <label >National Id</label>
+      <input name="nat_id" type="text" class="form-control" aria-describedby="emailHelp">
     </div>
-    <div class="form-group">
-      <label >Street Name</label>
-      <input name="street" type="text" class="form-control" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-      <label >Building Number</label>
-      <input name="building_number" type="number" class="form-control" aria-describedby="emailHelp">
-    </div>
-    <div class="form-group">
-      <label >Floor Number</label>
-      <input name="floor_number" type="number" class="form-control" aria-describedby="emailHelp">
-    </div>
-    </div>
-    <div class="form-group">
-      <label >Flat Number</label>
-      <input name="flat_number" type="number" class="form-control" aria-describedby="emailHelp">
-    </div>
+    
+   
    
       
       <input name="pasword"type="hidden" value="null" class="form-control" aria-describedby="emailHelp">

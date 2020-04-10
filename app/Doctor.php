@@ -6,5 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
-   protected $fillable=['created_at','is_banned','doctor_name','email','image'];
+   protected $guarded=[];
+   
+   public function getImageUrl(){
+      return asset($this->image);
+   }
+   public function user(){
+      return $this->belongsTo('App\User');
+   }
+  
 }

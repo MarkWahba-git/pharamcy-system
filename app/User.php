@@ -18,10 +18,8 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password','avatar','nat_id','updated_at','created_at',
-        'role','street_name','area_id','flat_number','floor_number',
-        'building_number'
+    protected $guarded = [
+
     ];
    
 
@@ -31,7 +29,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token',
     ];
 
     /**
@@ -42,7 +40,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
     
     public function getImageUrl(){
         return asset($this->avatar);

@@ -21,6 +21,8 @@
 
    <h3 class="d-flex justify-content-center" id="doctor">Doctors</h3>
 <div class="container" id='container'>
+<a href="<?php echo e(route('doctorstab.create')); ?>" class="btn btn-success  m-5">Create Doctor</a>
+
   <div class="row">
         <table class="table table-dark">
         <thead>

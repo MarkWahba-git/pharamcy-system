@@ -8,25 +8,19 @@ class Orders extends Model
 {
     
     
-    protected $fillable=[
-        'user_id',
-        'doctor_id',
-        'is_insured',
-        'status',
+    
+    protected $fillable = [
+       
         'pharmacy_id',
-        'medicine_id',
+        'doctor_id',
+        'user_id',
+        'status',
+        'is_insured',
         'created_at'
     ];
+
     public function doctor(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\Doctor','id','doctor_id');
     }
-    public function user(){
-        return $this->belongsTo('App\User');
-    }
-    public function drug(){
-        return $this->belongsTo('App\Drug');
-    }
-    public function pharmacy(){
-        return $this->belongsTo('App\Pharmacy');
-    }
+   
 }
