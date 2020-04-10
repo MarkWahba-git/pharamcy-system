@@ -19,7 +19,7 @@
      <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button>
      </div>
      <br />
-     <!-- <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button> -->
+     
    <div class="table-responsive">
     <table class="table table-bordered table-striped" id="drug_table">
            <thead>
@@ -38,9 +38,7 @@
   <div id="drugModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-        
             <form method="post" id="add_drug_form">
-            
                 <div class="modal-header">
                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                    <h4 class="modal-title">Add Drug</h4>
@@ -68,10 +66,7 @@
                     <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-                 
             </form>
-             
-
         </div>
     </div>
 </div>

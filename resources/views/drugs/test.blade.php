@@ -16,7 +16,7 @@
      <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button>
      </div>
      <br />
-     <!-- <button type="button" name="add_drug_btn" id="add_drug_btn" class="btn btn-success btn-sm">Add Drug</button> -->
+    
    <div class="table-responsive">
     <table class="table table-bordered table-striped" id="drug_table">
            <thead>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <!-- a hidden input to check for it's type later C, R, U, or D -->
+                   
                     <input type="hidden" name="button_action" id="button_action" value="create" />
                     <input type="hidden" name="form_drug_id" id="form_drug_id" value="" />
                     <input type="submit" name="submit" id="action" value="Add" class="btn btn-info" />
