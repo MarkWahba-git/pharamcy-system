@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.landing');
 });
 
 Route::get('/dashboard', function () {
@@ -24,10 +24,11 @@ Route::get('/dashboard', function () {
 /* **Pharmacy Routes** */
 //=======================================================================================
 Route::group([],function(){
-    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');   
-    Route::get('/pharmacies/create','PharmacyController@create')->name('pharmacies.create');    
-    Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
-    Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
+    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
+    Route::get('/pharmacies/getPharmacies','PharmacyController@getPharmacies')->name('pharmacies.getPharmacies');
+    Route::post('/pharmacies/postPharmacies','PharmacyController@postPharmacies')->name('pharmacies.postPharmacies');
+    Route::get('/pharmacies/fetchPharmacies','PharmacyController@fetchPharmacies')->name('pharmacies.fetchPharmacies');
+    Route::get('/pharmacies/removePharmacy','PharmacyController@removePharmacy')->name('pharmacies.removePharmacy');
 });
 //=======================================================================================
 /* **Orders Manager Routes** */
@@ -54,6 +55,13 @@ Route::group([],function(){
     Route::get('/drugs/orderdrugs','DrugController@orderDrugs')->name('drugs.orderdrugs');
 });
 //=======================================================================================
+/** Item Routes **/
+Route::group([],function(){
+    Route::get('/drugs/orderdrugs/{order_id}/','ItemController@orderDrugs')->name('drugs.orderdrugs');
+    Route::post('/drugs/store/{order_id}/','ItemController@store')->name('drugs.store');
+    
+});
+//========================================================================
 
 /* **User Routes** */ 
 Route::group([],function(){
@@ -68,7 +76,10 @@ Route::group([],function(){
 /* **Orders Routes** */
 Route::group([],function(){
     Route::get('/orders','OrdersController@index')->name('orders.index');
-    Route::get('/orders/getdata', 'OrdersController@getData')->name('orders.getdata');
+    Route::get('/orders/getdata','OrdersController@getData')->name('orders.getdata');
+    Route::post('/orders/postorder','OrdersController@postOrders')->name('orders.postorder');
+    Route::get('orders/fetchorder', 'OrdersController@fetchorder')->name('orders.fetchorder');
+    Route::get('orders/removeorder', 'OrdersController@removeorder')->name('orders.removeorder');
 });
 //============================================================================================
 
@@ -78,11 +89,18 @@ Route::group([],function(){
     Route::delete('/doctorstab/{doctor}','DoctorTabController@destroy')->name('doctorstab.destroy');
     Route::get('/doctorstab/{doctor}/edit','DoctorTabController@edit')->name('doctorstab.edit');
     Route::put('/doctorstab/{doctor}','DoctorTabController@update')->name('doctorstab.update');
-    Route::get('doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image'); 
+    Route::put('/doctorstab/ban/{doctor}','DoctorTabController@ban')->name('doctorstab.ban');
+    Route::get('/doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image')->name('doctorstab.fetch_image');
+
+    //create doctor
+    Route::get('/doctorstab/create','DoctorTabController@create')->name('doctorstab.create');
+    Route::post('/doctorstab','DoctorTabController@store')->name('doctorstab.store');
 });
 //============================================================================================
 
 
-Auth::routes();
+Auth::routes(['register' => false,
+            'verify' => true
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

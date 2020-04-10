@@ -18,7 +18,7 @@
 <body>
 <div class="container">
 <div class="mt-5">
-<form method="POST" action="{{route('doctorstab.update',$doctor->nat_id)}}">
+<form method="POST" action="{{route('doctorstab.update',$doctor->id)}}">
     @csrf
     @method('PUT')
     
@@ -28,10 +28,15 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Email</label>
-      <input name="email" class="form-control" value="{{$doctor->email}}">
+      <input name="email"  type="email"class="form-control" value="{{$doctor->email}}">
      
-      </textarea>
     </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">National Id</label>
+      <input name="nat_id"  tyep="number" class="form-control" value="{{$doctor->nat_id}}">
+     
+    </div>
+   
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

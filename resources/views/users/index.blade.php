@@ -12,92 +12,105 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-<button type="button" name="add" id="add_user" class="btn btn-success btn-sm">Add User</button>
-<br><br>
-<div> 
-    <table class="table table-bordered table-striped" id="user_table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Role</th>
-            <th>Street Name</th>
-            <th>Building Number</th>
-            <th>Floor Number</th>
-            <th>Flat Number</th>
-            <th>Area</th>
-            <th>National ID</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    </table>
-</div>
+    <button type="button" name="add" id="add_user" class="btn btn-success btn-sm">Add User</button>
+    <br><br>
+    <div> 
+        <table class="table table-bordered table-striped" id="user_table">
+        <thead>
+            <tr>
+                <th>National ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Phone Number</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Avatar</th>
+                <th>Is Banned</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        </table>
+    </div>
 
 
-<div id="userModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" id="user_form">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add User</h4>
-                </div>
-                <div class="modal-body">
-                    {{csrf_field()}}
-                    <span id="form_output"></span>
-                    <div class="form-group">
-                        <label>Enter Name</label>
-                        <input type="text" name="name" id="name" class="form-control" />
+    <div id="userModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" id="user_form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add User</h4>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Email</label>
-                        <input type="text" name="email" id="email" class="form-control"/>
+                    <div class="modal-body">
+                        {{csrf_field()}}
+                        <span id="form_output"></span>
+                        <div class="form-group">
+                            <label>Enter National ID</label>
+                            <input type="text" name="nat_id" id="nat_id" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Name</label>
+                            <input type="text" name="name" id="name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Email</label>
+                            <input type="text" name="email" id="email" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Date Of Birth</label>
+                            <input type="date" name="dob" id="dob" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Choose Gender</label>
+                            <br>
+                            <input type="radio" name="gender" id="male" value="Male" />
+                            <label for="male">Male</label>
+                            <br>
+                            <input type="radio" name="gender" id="female" value="Female" />
+                            <label for="female">Female</label>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Phone Number</label>                        
+                            <input type="text" id="phone_number" name="phone_number" placeholder="+20-1x-xxxx-xxxx" 
+                            required class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Password</label>
+                            <input type="text" name="password" id="password" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="role">Select Role</label>
+                            <select id="role" name="role" class="form-control">
+                                <option value="Doctor">Doctor</option>
+                                <option value="User">User</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Avatar</label>
+                            <input type="text" name="avatar" id="avatar" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Banned or Ubanned</label>
+                            <br>
+                            <input type="radio" name="is_banned" id="1" value="Banned"/>
+                            <label for="1">Banned</label>
+                            <br>
+                            <input type="radio" name="is_banned" id="0" value="Unbanned"/>
+                            <label for="0">Unbanned</label>                    
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Password</label>
-                        <input type="text" name="password" id="password" class="form-control"/>
+                    <div class="modal-footer">
+                        <input type="hidden" name="user_id" value=""/>
+                        <input type="hidden" name="button_action" id="button_action" value="insert"/>
+                        <input type="submit" name="submit" id="action" value="Add" class="btn btn-info"/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Role</label>
-                        <input type="text" name="role" id="role" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Street Name</label>
-                        <input type="text" name="street_name" id="street_name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Building Number</label>
-                        <input type="text" name="building_number" id="building_number" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Floor Number</label>
-                        <input type="text" name="floor_number" id="name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Flat Number</label>
-                        <input type="text" name="flat_number" id="name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Area</label>
-                        <input type="text" name="area" id="area" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter National ID</label>
-                        <input type="text" name="nat_id" id="nat_id" class="form-control"/>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="user_id" value=""/>
-                    <input type="hidden" name="button_action" id="button_action" value="insert"/>
-                    <input type="submit" name="submit" id="action" value="Add" class="btn btn-info"/>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -106,16 +119,16 @@
             "serverSide" : true,
             "ajax"       : "{{ route('users.getUsers') }}",
             "columns"    : [
+                { "data" : "nat_id" },
                 { "data" : "name" },
                 { "data" : "email" },
+                { "data" : "dob" },
+                { "data" : "gender" },
+                { "data" : "phone_number" },
                 { "data" : "password" },
                 { "data" : "role" },
-                { "data" : "street_name" },
-                { "data" : "building_number" },
-                { "data" : "floor_number" },
-                { "data" : "flat_number" },
-                { "data" : "area_id" },
-                { "data" : "nat_id" },
+                { "data" : "avatar" },
+                { "data" : "is_banned" },
                 { "data" : "action" , orderable:false , searchable:false },
             ],
         });
@@ -162,6 +175,7 @@
 
         $(document).on('click','.edit',function(){
             var id = $(this).attr("id");
+            $('#form_output').html('');
             $.ajax({
                 url         : "{{ route('users.fetchUsers') }}",
                 method      : 'get',
@@ -169,16 +183,16 @@
                 dataType    : 'json',
                 success:function(data)
                 {
+                    $('#nat_id').val(data.nat_id);
                     $('#name').val(data.name);
                     $('#email').val(data.email);
+                    $('#dob').val(data.dob);
+                    $('#gender').val(data.gender);
+                    $('#phone_number').val(data.phone_number);
                     $('#password').val(data.password);
                     $('#role').val(data.role);
-                    $('#street_name').val(data.street_name);
-                    $('#building_number').val(data.building_number);
-                    $('#floor_number').val(data.floor_number);
-                    $('#flat_number').val(data.flat_number);
-                    $('#area_id').val(data.area_id);
-                    $('#nat_id').val(data.nat_id);
+                    $('#avatar').val(data.avatar);
+                    $('#is_banned').val(data.is_banned);
                     $('#user_id').val(id);
                     $('#userModal').modal('show');
                     $('#action').val('Edit');

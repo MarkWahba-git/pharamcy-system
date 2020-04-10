@@ -18,7 +18,7 @@
 <body>
 <div class="container">
 <div class="mt-5">
-<form method="POST" action="<?php echo e(route('doctorstab.update',$doctor->nat_id)); ?>">
+<form method="POST" action="<?php echo e(route('doctorstab.update',$doctor->id)); ?>">
     <?php echo csrf_field(); ?>
     <?php echo method_field('PUT'); ?>
     
@@ -28,10 +28,15 @@
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Email</label>
-      <input name="email" class="form-control" value="<?php echo e($doctor->email); ?>">
+      <input name="email"  type="email"class="form-control" value="<?php echo e($doctor->email); ?>">
      
-      </textarea>
     </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">National Id</label>
+      <input name="nat_id"  tyep="number" class="form-control" value="<?php echo e($doctor->nat_id); ?>">
+     
+    </div>
+   
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

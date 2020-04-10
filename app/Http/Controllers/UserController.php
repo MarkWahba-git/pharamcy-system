@@ -16,24 +16,24 @@ class UserController extends Controller
     public function getUsers()
     {
         $users = User::select(
+            'nat_id',
             'name',
             'email',
+            'dob',
+            'gender',
+            'phone_number',
             'password',
             'role',
-            'street_name',
-            'building_number',
-            'floor_number',
-            'flat_number',
-            'area_id',
-            'nat_id',
+            'avatar',
+            'is_banned'
         );
-        return Datatables::of($users)->make(true)
+        return Datatables::of($users)
             ->addColumn('action',function($user){
                 return '<a href="#" class="btn btn-xs btn-primary edit" id="'.$user->id.'">
                         <i class="glyphicon glyphicon-edit"></i> Edit</a>
                         <a href="#" class="btn btn-xs btn-danger delete"
                         id="'.$user->id.'"><i class="glyphicon glyphicon-remove">
-                        </i>Delete</a>';                  
+                        </i>Delete</a>';
             })
             ->make(true);
     }
@@ -41,15 +41,16 @@ class UserController extends Controller
     public function postUsers(Request $request)
     {
         $validation = Validator::make($request->all(),[
+            'nat_id'            => 'required',
             'name'              => 'required',
             'email'             => 'required',
+            'dob'               => 'required',
+            'gender'            => 'required',
+            'phone_number'      => 'required',
             'password'          => 'required',
             'role'              => 'required',
-            'street_name'       => 'required',
-            'building_number'   => 'required',
-            'floor_number'      => 'required',
-            'flat_number'       => 'required',
-            'nat_id'            => 'required',
+            'avatar'            => 'required',
+            'is_banned'         => 'required',
         ]);
 
         $error_array = array();
@@ -65,34 +66,35 @@ class UserController extends Controller
         {
             if($request->get('button_action') == "insert")
             {
-                User::create($validation);
-                // $user = new User([
-                //     'name'              => $request->get('name'),
-                //     'email'             => $request->get('email'),
-                //     'password'          => $request->get('password'),
-                //     'role'              => $request->get('role'),
-                //     'street_name'       => $request->get('street_name'),
-                //     'building_number'   => $request->get('building_number'),
-                //     'floor_number'      => $request->get('floor_number'),
-                //     'flat_number'       => $request->get('flat_number'),
-                //     'nat_id'            => $request->get('nat_id'),
-                // ]);
-                // $user->save();
-                // $success_output = '<div class="alert alert-success">User inserted</div>';
+                $user = new User([
+                    'nat_id'            => $request->get('nat_id'),
+                    'name'              => $request->get('name'),
+                    'email'             => $request->get('email'),
+                    'dob'               => $request->get('dob'),
+                    'gender'            => $request->get('gender'),
+                    'phone_number'      => $request->get('phone_number'),
+                    'password'          => $request->get('password'),
+                    'role'              => $request->get('role'),
+                    'avatar'            => $request->get('avatar'),
+                    'is_banned'         => $request->get('is_banned'),
+                ]);
+                $user->save();
+                $success_output = '<div class="alert alert-success">User inserted</div>';
             }
 
             if($request->get('button_action') == 'update')
             {
                 $user = User::find($request->get('user_id'));
+                $user->nat_id           = $request->get('nat_id');
                 $user->name             = $request->get('name');
                 $user->email            = $request->get('email');
+                $user->dob              = $request->get('dob');
+                $user->gender           = $request->get('gender');
+                $user->phone_number     = $request->get('phone_number');
                 $user->password         = $request->get('password');
                 $user->role             = $request->get('role');
-                $user->street_name      = $request->get('street_name');
-                $user->building_number  = $request->get('building_number');
-                $user->floor_number     = $request->get('floor_number');
-                $user->flat_number      = $request->get('flat_number');
-                $user->nat_id           = $request->get('nat_id');
+                $user->avatar           = $request->get('avatar');
+                $user->is_banned        = $request->get('is_banned');
                 $user->save();
                 $success_output = '<div class="alert alert-success">User Updated</div>';
             }
@@ -109,15 +111,16 @@ class UserController extends Controller
         $id = $request->input('id');
         $user = User::find($id);
         $output = array(
+            'nat_id'            =>  $user->nat_id,
             'name'              =>  $user->name,
             'email'             =>  $user->email,
+            'dob'               =>  $user->dob,
+            'gender'            =>  $user->gender,
+            'phone_number'      =>  $user->phone_number,
             'password'          =>  $user->password,
             'role'              =>  $user->role,
-            'street_name'       =>  $user->street_name,
-            'building_number'   =>  $user->building_number,
-            'floor_number'      =>  $user->floor_number,
-            'flat_number'       =>  $user->flat_number,
-            'nat_id'            =>  $user->nat_id
+            'avatar'            =>  $user->avatar,
+            'is_banned'         =>  $user->is_banned,
         );
         echo json_encode($output);
     }
@@ -129,83 +132,5 @@ class UserController extends Controller
         {
             echo 'User Deleted';
         }
-    }
-
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-        
-    // }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    //     $user = User::updateOrCreate(
-    //                         ['id' => $request->id],
-    //                         [  
-    //                             'name' => $request->name,
-    //                             'email' => $request->email, 
-    //                             'password' => $request->password, 
-    //                             'role' => $request->role,
-    //                             'street_name' => $request->street_name,
-    //                             'building_number' => $request->building_number,
-    //                             'floor_number' => $request->floor_number,
-    //                             'flat_number' => $request->flat_number,
-    //                             'area_id' => $request->area_id,
-    //                             'nat_id' => $request->nat_id,
-    //                         ]);        
-    //     return Response::json($doctor);
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-        
-    // }
-
-
-    // public function edit($id)
-    // {
-    //     $place = array('id' => $id);
-    //     $user  = User::where($place)->first();
-    //     return Response::json($doctor);
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     $user = User::where('id',$id)->delete();
-    //     return Response::json($user);
-    // }
+    }   
 }
