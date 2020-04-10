@@ -35,6 +35,7 @@
        </table>
     </div>
   </div>
+  
   <div id="drugModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -71,6 +72,7 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -195,7 +197,8 @@ $(document).on('click', '.edit', function(){
 
 });
 
+
 </script>
 </body>
-
+</html>
 <?php /**PATH /home/marc/Desktop/pharmacy-system/pharamcy-system/resources/views/drugs/index.blade.php ENDPATH**/ ?>
