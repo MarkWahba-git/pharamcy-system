@@ -28,4 +28,8 @@ class Orders extends Model
     public function pharmacy(){
         return $this->belongsTo('App\Pharmacy');
     }
+    public function items(){
+        
+        return $this->hasMany('App\Item');
+    }
 }

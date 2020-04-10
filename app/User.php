@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasApiTokens, Notifiable;
 
 
     /**
@@ -43,6 +43,15 @@ class User extends Authenticatable
     
     public function getImageUrl(){
         return asset($this->avatar);
+    }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+    public function orders()
+    {
+        return $this->hasMany(Orders::class);
     }
   
 
