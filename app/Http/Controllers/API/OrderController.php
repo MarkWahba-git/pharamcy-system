@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ItemResource;
 use App\Item;
+use App\Pharmacy;
 use Illuminate\Http\Request;
 use App\Orders;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Resources\PharmacyResource;
+use App\Http\Requests\OrderRequest;
 
 
 class OrderController extends Controller
@@ -27,51 +31,76 @@ class OrderController extends Controller
         }catch(ModelNotFoundException $ex){
             return response()->json(['state'=>'order is notfound']);
         }
-        $items = Item::where('order_id',$id);
+        $items = Item::where('order_id',$id)->get();
+        $items = ItemResource::collection($items);
+
+        $order_total_price = $this->calculateTotalPricre($items);
 
         return response()->json([
             'order_id'=>$id,
-            'medecines'=>$items
-            
-            
+            'medecines'=> $items,
+            'order_total_price'=> $order_total_price,
+            'ordered_at'=> date_diff(new \DateTime('now'),$order->created_at)->h .' hours ago',
+            'status'=>$order->status,
+            'assigned_pharmacy'=>new PharmacyResource(Pharmacy::find($order->pharmacy_id))
             
             ]);
 
     }
 
-    // public function store(AddressRequest $request){
+    public function store(OrderRequest $request){
 
-    //     Address::create(array_merge(
-    //         $request->all(), ['user_id' => $request->user()->id]));
+        Orders::create(
+            array_merge($request->all(), [
+                
+                'user_id' => $request->user()->id,
+                'status'=>'new'
+                ]));
         
-    //     return response()->json(['state'=>'address is added']);
+        return response()->json(['state'=>'order is added']);
+    }
+    
+    public function update(OrderRequest $request, $id){
+        try{
+            $order = 
+            Orders::where('user_id',$request->user()->id)
+                    ->where('id', $id)->firstOrFail();
+        }catch(ModelNotFoundException $ex){
+            return response()->json(['state'=>'order is notfound']);
+        }
+        if($order->status =='new'){
+            $order->update($request->all());
+            return response()->json(['state'=>'order is updated']);
+        }
+        else{
+            return response()->json(['state'=>'Cannot modify this order']);
+        }
+        
+    }
 
-    // }
+    public function destroy(Request $request, $id){
+        try{
+            $order = 
+            Orders::where('user_id',$request->user()->id)
+                    ->where('id', $id)->firstOrFail();
+        }catch(ModelNotFoundException $ex){
+            return response()->json(['state'=>'order is notfound']);
+        }
+        if($order->status =='new'){
+            $order->delete();
+            return response()->json(['state'=>'order is deleted']);
+        }
+        else{
+            return response()->json(['state'=>'Cannot delete this order']);
+        }
+    }
 
-    // public function update(AddressRequest $request, $id){
-    //     try{
-    //         $address = 
-    //         Address::where('user_id',$request->user()->id)
-    //                 ->where('id', $id)->firstOrFail();
-    //     }catch(ModelNotFoundException $ex){
-    //         return response()->json(['state'=>'address is notfound']);
-    //     }
+    private function calculateTotalPricre($items){
+        $order_total_price = 0;
+        foreach($items as $item){
 
-    //     $address->update($request->all());
-    //     return response()->json(['state'=>'address is updated']);
-    // }
-
-    // public function destroy(Request $request, $id){
-    //     try{
-    //         $address = 
-    //         Address::where('user_id',$request->user()->id)
-    //                 ->where('id', $id)->firstOrFail();
-    //     }catch(ModelNotFoundException $ex){
-    //         return response()->json(['state'=>'address is notfound']);
-    //     }
-
-    //     $address->delete();
-    //     return response()->json(['state'=>'address is deleted']);
-
-    // }
+            $order_total_price += $item->drug_qty * $item->drug_unit_price;
+            return $order_total_price;
+        }
+    }
 }

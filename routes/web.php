@@ -69,21 +69,44 @@ Route::group([],function(){
 /* **Orders Routes** */
 Route::group([],function(){
     Route::get('/orders','OrdersController@index')->name('orders.index');
-    Route::get('/orders/getdata', 'OrdersController@getData')->name('orders.getdata');
+    Route::get('/orders/getdata','OrdersController@getData')->name('orders.getdata');
+    Route::post('/orders/postorder','OrdersController@postOrders')->name('orders.postorder');
+    Route::get('orders/fetchorder', 'OrdersController@fetchorder')->name('orders.fetchorder');
+    Route::get('orders/removeorder', 'OrdersController@removeorder')->name('orders.removeorder');
+
+
+
+
+
+
+
+
 });
 //============================================================================================
 
 /* **Doctors Routes** */
 Route::group([],function(){
     Route::get('/doctorstab','DoctorTabController@index')->name('doctorstab.index');
+    
     Route::delete('/doctorstab/{doctor}','DoctorTabController@destroy')->name('doctorstab.destroy');
     Route::get('/doctorstab/{doctor}/edit','DoctorTabController@edit')->name('doctorstab.edit');
     Route::put('/doctorstab/{doctor}','DoctorTabController@update')->name('doctorstab.update');
-    Route::get('doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image'); 
+    Route::put('/doctorstab/ban/{doctor}','DoctorTabController@ban')->name('doctorstab.ban');
+    Route::get('/doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image')->name('doctorstab.fetch_image');
+
+
+    //create doctor
+    Route::get('/doctorstab/create','DoctorTabController@create')->name('doctorstab.create');
+    Route::post('/doctorstab','DoctorTabController@store')->name('doctorstab.store');
+
+    
 });
 //============================================================================================
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false,
+            'verify' => true
+
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Pharmacy extends Model
 {
 
+    protected $guarded=[];
+
+
+   
+    public function getImageUrl(){
+        return asset($this->image);
+     }
     protected $fillable = [
         'name',
         'street_name',
@@ -20,8 +27,12 @@ class Pharmacy extends Model
     //     return $this->belongsTo('App\User');
     // }
 
-    // public function area()
-    // {
-    //     return $this->belongsTo('App\Area');
-    // }
+    public function area()
+    {
+        return $this->belongsTo('App\Area');
+    }
+    public function orders()
+    {
+        return $this->hasMany('App\Orders');
+    }
 }
