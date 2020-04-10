@@ -24,10 +24,11 @@ Route::get('/dashboard', function () {
 /* **Pharmacy Routes** */
 //=======================================================================================
 Route::group([],function(){
-    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');   
-    Route::get('/pharmacies/create','PharmacyController@create')->name('pharmacies.create');    
-    Route::get('/pharmacies/{pharmacy}','PharmacyController@show')->name('pharmacies.show');
-    Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
+    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
+    Route::get('/pharmacies/getPharmacies','PharmacyController@getPharmacies')->name('pharmacies.getPharmacies');
+    Route::post('/pharmacies/postPharmacies','PharmacyController@postPharmacies')->name('pharmacies.postPharmacies');
+    Route::get('/pharmacies/fetchPharmacies','PharmacyController@fetchPharmacies')->name('pharmacies.fetchPharmacies');
+    Route::get('/pharmacies/removePharmacy','PharmacyController@removePharmacy')->name('pharmacies.removePharmacy');
 });
 //=======================================================================================
 

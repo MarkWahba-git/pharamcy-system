@@ -39,7 +39,8 @@
                     <h4 class="modal-title">Add Pharmacy</h4>
                 </div>
                 <div class="modal-body">
-                    {{csrf_field()}}
+                    <?php echo e(csrf_field()); ?>
+
                     <span id="form_output"></span>
                     <div class="form-group">
                         <label>Enter Name</label>
@@ -79,7 +80,7 @@
         $('#pharmacy_table').DataTable({
             "processing" : true,
             "serverSide" : true,
-            "ajax"       : "{{ route('pharmacies.getPharmacies') }}",
+            "ajax"       : "<?php echo e(route('pharmacies.getPharmacies')); ?>",
             "columns"    : [
                 { "data" : "name" },
                 { "data" : "street_name" },
@@ -102,7 +103,7 @@
             event.preventDefault();
             var form_data = $(this).serialize();
             $.ajax({
-                url : '{{ route("pharmacies.postPharmacies") }}',
+                url : '<?php echo e(route("pharmacies.postPharmacies")); ?>',
                 method : "POST",
                 data : form_data,
                 dataType : "json",
@@ -133,7 +134,7 @@
         $(document).on('click','.edit',function(){
             var id = $(this).attr("id");
             $.ajax({
-                url         : "{{ route('pharmacies.fetchPharmacies') }}",
+                url         : "<?php echo e(route('pharmacies.fetchPharmacies')); ?>",
                 method      : 'get',
                 data        : {id:id},
                 dataType    : 'json',
@@ -158,7 +159,7 @@
             if(confirm("Are you sure you want to Delete this Pharmacy?"))
             {
                 $.ajax({
-                    url         : "{{ route('pharmacies.removePharmacy') }}",
+                    url         : "<?php echo e(route('pharmacies.removePharmacy')); ?>",
                     method      : "get",
                     data        : {id:id},
                     success:function(data)
@@ -176,4 +177,4 @@
     });
 </script>
 </body>
-</html>
+</html><?php /**PATH /home/marc/Desktop/pharmacy-system/pharamcy-system/resources/views/pharmacies/index.blade.php ENDPATH**/ ?>

@@ -44,7 +44,8 @@
                     <h4 class="modal-title">Add User</h4>
                 </div>
                 <div class="modal-body">
-                    {{csrf_field()}}
+                    <?php echo e(csrf_field()); ?>
+
                     <span id="form_output"></span>
                     <div class="form-group">
                         <label>Enter National ID</label>
@@ -111,7 +112,7 @@
         $('#user_table').DataTable({
             "processing" : true,
             "serverSide" : true,
-            "ajax"       : "{{ route('users.getUsers') }}",
+            "ajax"       : "<?php echo e(route('users.getUsers')); ?>",
             "columns"    : [
                 { "data" : "avatar" },
                 { "data" : "nat_id" },
@@ -139,7 +140,7 @@
             event.preventDefault();
             var form_data = $(this).serialize();
             $.ajax({
-                url : '{{ route("users.postUsers") }}',
+                url : '<?php echo e(route("users.postUsers")); ?>',
                 method : "POST",
                 data : form_data,
                 dataType : "json",
@@ -170,7 +171,7 @@
         $(document).on('click','.edit',function(){
             var id = $(this).attr("id");
             $.ajax({
-                url         : "{{ route('users.fetchUsers') }}",
+                url         : "<?php echo e(route('users.fetchUsers')); ?>",
                 method      : 'get',
                 data        : {id:id},
                 dataType    : 'json',
@@ -200,7 +201,7 @@
             if(confirm("Are you sure you want to Delete this User?"))
             {
                 $.ajax({
-                    url         : "{{ route('users.removeUser') }}",
+                    url         : "<?php echo e(route('users.removeUser')); ?>",
                     method      : "get",
                     data        : {id:id},
                     success:function(data)
@@ -218,4 +219,4 @@
     });
 </script>
 </body>
-</html>
+</html><?php /**PATH /home/marc/Desktop/pharmacy-system/pharamcy-system/resources/views/users/index.blade.php ENDPATH**/ ?>
