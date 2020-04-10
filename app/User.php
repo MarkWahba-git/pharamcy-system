@@ -44,6 +44,11 @@ class User extends Authenticatable
     public function getImageUrl(){
         return asset($this->avatar);
     }
+
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
   
 
 }

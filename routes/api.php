@@ -26,6 +26,18 @@ Route::post('/store', 'API\UserController@store');
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//     return $request->user();
+//     // dd($request->user());
+//     return $request->user()->addresses;
 // });
+
+Route::group(['middleware'=>'auth:sanctum'], function(){
+
+    Route::get('/addresses','API\AddressController@index');
+    Route::post('/addresses','API\AddressController@store');
+    Route::patch('/addresses/{address}','API\AddressController@update');
+    Route::delete('/addresses/{address}','API\AddressController@destroy');
+
+});
+    
+
 

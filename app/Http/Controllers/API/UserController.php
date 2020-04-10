@@ -42,13 +42,14 @@ class UserController extends Controller
 
         $validatedData = 
             $request->validate([
-                'name'=> '',
-                'gender'=> 'in:male,female',
-                'password'=> '',
-                // 'date_of_birth' => '',
-                // 'profile_image'=> '',
-                // 'mobile_number'=> '',
-                // 'national_id'=> '' 
+                'name'=> 'required',
+                // 'gender'=> 'required|in:male,female',
+                'password'=> 'required',
+                'password_confirmation' => 'required_with:password|same:password',
+                // 'date_of_birth' => 'required',
+                // 'profile_image'=> 'required',
+                // 'mobile_number'=> 'required',
+                // 'national_id'=> 'required' 
             ]);
 
         $user->update($validatedData);
