@@ -1,14 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Make a Drug Order </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js">
+</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>  
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+  
+</head>
 <body>
   <div class="container" >
     <div class="row">
     <br>
-      <form action="{{ route('drugs.store',['order_id'=>$order_id ,1])}}" method="POST">
+      <form action="{{ route('drugs.store',['order_id'=>$order_id])}}" method="POST">
       @csrf
     @method('POST')
         <section>
           <div class="panel panel-header">
             <div class="row" >
-            <label for="">{{ $order_id }}</label>
+            
           </div>
           
           <div class="panel paner-footer">
@@ -195,7 +212,6 @@ $('.select_drug_unit_price').select2(
     tags: true
   }
 );
-
 
 });
 </script>
