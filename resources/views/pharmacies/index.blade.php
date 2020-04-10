@@ -12,67 +12,76 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-<button type="button" name="add" id="add_pharmacy" class="btn btn-success btn-sm">Add Pharmacy</button>
-<br><br>
-<div> 
-    <table class="table table-bordered table-striped" id="pharmacy_table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Street Name</th>
-            <th>Building Number</th>
-            <th>Owner</th>
-            <th>Area</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    </table>
-</div>
+<div class="container">
+    <button type="button" name="add" id="add_pharmacy" class="btn btn-success btn-sm">Add Pharmacy</button>
+    <br><br>
+    <div> 
+        <table class="table table-bordered table-striped" id="pharmacy_table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Street Name</th>
+                <th>Building Number</th>
+                <th>Owner</th>
+                <th>Area</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        </table>
+    </div>
 
 
-<div id="pharmacyModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <form method="post" id="pharmacy_form">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add Pharmacy</h4>
-                </div>
-                <div class="modal-body">
-                    {{csrf_field()}}
-                    <span id="form_output"></span>
-                    <div class="form-group">
-                        <label>Enter Name</label>
-                        <input type="text" name="name" id="name" class="form-control" />
+    <div id="pharmacyModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" id="pharmacy_form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add Pharmacy</h4>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Street Name</label>
-                        <input type="text" name="street_name" id="street_name" class="form-control"/>
+                    <div class="modal-body">
+                        {{csrf_field()}}
+                        <span id="form_output"></span>
+                        <div class="form-group">
+                            <label>Enter Name</label>
+                            <input type="text" name="name" id="name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Street Name</label>
+                            <input type="text" name="street_name" id="street_name" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Enter Building Number</label>
+                            <input type="text" name="building_number" id="building_number" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Choose the Owner</label>
+                            <select name="owner_id" class="form-control">
+                                @foreach($users as $user)  
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Choose the Area</label>
+                            <select name="area_id" class="form-control">
+                                @foreach($areas as $area)  
+                                <option value="{{$area->id}}">{{$area->area_name}}</option>
+                                @endforeach
+                            </select>                    
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Building Number</label>
-                        <input type="text" name="building_number" id="building_number" class="form-control"/>
+                    <div class="modal-footer">
+                        <input type="hidden" name="pharmacy_id" value=""/>
+                        <input type="hidden" name="button_action" id="button_action" value="insert"/>
+                        <input type="submit" name="submit" id="action" value="Add" class="btn btn-info"/>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Owner</label>
-                        <input type="text" name="nat_id" id="nat_id" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Area</label>
-                        <input type="text" name="area" id="area" class="form-control"/>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" name="pharmacy_id" value=""/>
-                    <input type="hidden" name="button_action" id="button_action" value="insert"/>
-                    <input type="submit" name="submit" id="action" value="Add" class="btn btn-info"/>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -132,6 +141,7 @@
 
         $(document).on('click','.edit',function(){
             var id = $(this).attr("id");
+            $('#form_output').html('');
             $.ajax({
                 url         : "{{ route('pharmacies.fetchPharmacies') }}",
                 method      : 'get',
@@ -142,7 +152,7 @@
                     $('#name').val(data.name);
                     $('#street_name').val(data.street_name);
                     $('#building_number').val(data.building_number);
-                    $('#owner_id').val(data.nat_id);
+                    $('#owner_id').val(data.owner_id);
                     $('#area_id').val(data.area_id);
                     $('#pharmacy_id').val(id);
                     $('#pharmacyModal').modal('show');

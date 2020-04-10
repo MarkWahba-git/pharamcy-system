@@ -6,12 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Address' => $baseDir . '/app/Address.php',
     'App\\Area' => $baseDir . '/app/Area.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\DataTables\\MyOrderDatatable' => $baseDir . '/app/DataTables/MyOrderDatatable.php',
     'App\\Doctor' => $baseDir . '/app/Doctor.php',
     'App\\Drug' => $baseDir . '/app/Drug.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\API\\AddressController' => $baseDir . '/app/Http/Controllers/API/AddressController.php',
+    'App\\Http\\Controllers\\API\\OrderController' => $baseDir . '/app/Http/Controllers/API/OrderController.php',
     'App\\Http\\Controllers\\API\\SanctumController' => $baseDir . '/app/Http/Controllers/API/SanctumController.php',
     'App\\Http\\Controllers\\API\\UserController' => $baseDir . '/app/Http/Controllers/API/UserController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -36,9 +39,12 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Requests\\AddressRequest' => $baseDir . '/app/Http/Requests/AddressRequest.php',
     'App\\Http\\Requests\\StorePharmacyRequest' => $baseDir . '/app/Http/Requests/StorePharmacyRequest.php',
     'App\\Http\\Resources\\UserResource' => $baseDir . '/app/Http/Resources/UserResource.php',
+    'App\\Item' => $baseDir . '/app/Item.php',
     'App\\Mail\\WelcomeMail' => $baseDir . '/app/Mail/WelcomeMail.php',
+    'App\\Notifications\\ResetPassword' => $baseDir . '/app/Notifications/ResetPassword.php',
     'App\\Orders' => $baseDir . '/app/Orders.php',
     'App\\Pharmacy' => $baseDir . '/app/Pharmacy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

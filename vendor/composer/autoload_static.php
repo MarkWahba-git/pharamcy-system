@@ -600,12 +600,15 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
     );
 
     public static $classMap = array (
+        'App\\Address' => __DIR__ . '/../..' . '/app/Address.php',
         'App\\Area' => __DIR__ . '/../..' . '/app/Area.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\DataTables\\MyOrderDatatable' => __DIR__ . '/../..' . '/app/DataTables/MyOrderDatatable.php',
         'App\\Doctor' => __DIR__ . '/../..' . '/app/Doctor.php',
         'App\\Drug' => __DIR__ . '/../..' . '/app/Drug.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/AddressController.php',
+        'App\\Http\\Controllers\\API\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/OrderController.php',
         'App\\Http\\Controllers\\API\\SanctumController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/SanctumController.php',
         'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
@@ -630,9 +633,12 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\AddressRequest' => __DIR__ . '/../..' . '/app/Http/Requests/AddressRequest.php',
         'App\\Http\\Requests\\StorePharmacyRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StorePharmacyRequest.php',
         'App\\Http\\Resources\\UserResource' => __DIR__ . '/../..' . '/app/Http/Resources/UserResource.php',
+        'App\\Item' => __DIR__ . '/../..' . '/app/Item.php',
         'App\\Mail\\WelcomeMail' => __DIR__ . '/../..' . '/app/Mail/WelcomeMail.php',
+        'App\\Notifications\\ResetPassword' => __DIR__ . '/../..' . '/app/Notifications/ResetPassword.php',
         'App\\Orders' => __DIR__ . '/../..' . '/app/Orders.php',
         'App\\Pharmacy' => __DIR__ . '/../..' . '/app/Pharmacy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
