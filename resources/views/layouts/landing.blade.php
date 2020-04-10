@@ -174,7 +174,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">dfdfd Pierce</a>
+          <a href="#" class="d-block">Welcome</a>
         </div>
       </div>
 
@@ -196,15 +196,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="{{ route('users.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>ChartJS</p>
+                  <p> Users</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{ route ('pharmacies.index') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Flot</p>
+                  <p>Pharmachies</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -245,7 +245,7 @@
             
             </ul>
           </li>
-          <li class="nav-item has-treeview">
+          <!-- <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
@@ -308,7 +308,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> -->
           
         </ul>
       </nav>
