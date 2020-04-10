@@ -83,6 +83,9 @@ Route::group([],function(){
 //============================================================================================
 
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => false,
+            'verify' => true
+
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

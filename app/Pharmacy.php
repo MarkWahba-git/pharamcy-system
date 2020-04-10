@@ -25,4 +25,8 @@ class Pharmacy extends Model
     {
         return $this->belongsTo('App\Area');
     }
+    public function orders()
+    {
+        return $this->hasMany('App\Orders');
+    }
 }

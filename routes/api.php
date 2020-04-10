@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/sanctum/token', 'API\SanctumController@generateToken');
 
-Route::post('/store', 'API\UserController@store');
+Route::post('/users', 'API\UserController@store');
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
 

@@ -24,6 +24,9 @@ class CreateOrdersTable extends Migration
             $table->foreign('pharmacy_id')->references('id')->on('pharmacies')->onDelete('cascade');
             $table->integer('is_insured')->default(0);
             $table->timestamps();
+            $table->binary('prescription1');
+            $table->binary('prescription2');
+            $table->binary('prescription3');
         });
     }
 
