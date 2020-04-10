@@ -607,12 +607,9 @@ class ComposerStaticInit365a254b411f74d06ddd1beb3176face
         'App\\Doctor' => __DIR__ . '/../..' . '/app/Doctor.php',
         'App\\Drug' => __DIR__ . '/../..' . '/app/Drug.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-<<<<<<< HEAD
-=======
         'App\\Http\\Controllers\\API\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/AddressController.php',
         'App\\Http\\Controllers\\API\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/OrderController.php',
         'App\\Http\\Controllers\\API\\SanctumController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/SanctumController.php',
->>>>>>> 8680cf8aca66af23217b45771f5af75a869251bd
         'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
