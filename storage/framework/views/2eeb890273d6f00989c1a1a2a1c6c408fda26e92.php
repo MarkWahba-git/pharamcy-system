@@ -39,20 +39,39 @@
     </div>
     <div class="form-group">
       <label >Image</label>
-      <input name="image" type="file" class="form-control" aria-describedby="emailHelp">
+      <input name="avatar" type="file" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
       <label >National Id</label>
       <input name="nat_id" type="text" class="form-control" aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-      <label >National Id</label>
-      <input name="nat_id" type="text" class="form-control" aria-describedby="emailHelp">
+      <label >Date Of Birth</label>
+      <input name="dob" type="date" class="form-control" aria-describedby="emailHelp">
+    </div>
+    <div class="form-group">
+      <label >Gender</label>
+      <select class="form-control" name="gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+
+      </select>
+      <div class="form-group">
+      <label >Phone</label>
+      <input name="phone_number" type="text" class="form-control" aria-describedby="emailHelp">
+    </div>
     </div>
     
    
-   
-      
+    <div class="form-group">
+      <label >Is Banned</label>
+      <select class="form-control" name="is_banned">
+        <option value="0">banned</option>
+        <option value="1">un banned</option>
+
+      </select>
+    </div>
+    
       <input name="pasword"type="hidden" value="null" class="form-control" aria-describedby="emailHelp">
    
 

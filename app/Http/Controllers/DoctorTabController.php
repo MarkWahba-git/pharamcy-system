@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 
 use Illuminate\Http\Request;
-
+use validator;
 use App\User;
 use App\Pharmacy;
 use Illuminate\Support\Facades\DB;
@@ -28,14 +28,24 @@ class DoctorTabController extends Controller
         $users=User::all();
         return view('doctorstab.create');
       }
-      public function store(){
-        $request=request();
-         
-           $doctor->name=$request->name;
-           $doctor->image=$request->image;
-           $doctor->email=$request->email;
-           $doctor->is_banned=$request->is_banned;
-           
+      public function store(Request $request){
+
+
+        $doctor=new User();
+        $doctor=$request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+        $saveToDB= $request->only(['name', 'email','is_banned','nat_id','gender']);
+          User::create($saveToDB);
+        
+        //    $doctor->name=$request->name;
+        //    $doctor->email=$request->email;
+        //    $doctor->is_banned=$request->is_banned;
+        //    $doctor->nat_id=$request->dob;
+        //    $doctor->gender=$request->gender;
+
+        //  $doctor.save();
 
         return redirect()->route('doctorstab.index');
     }
