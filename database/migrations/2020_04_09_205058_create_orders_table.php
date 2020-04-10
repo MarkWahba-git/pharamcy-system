@@ -27,6 +27,8 @@ class CreateOrdersTable extends Migration
             $table->binary('prescription1');
             $table->binary('prescription2');
             $table->binary('prescription3');
+            $table->unsignedBigInteger('address_id');
+            $table->foreign('address_id')->references('id')->on('addresses');
         });
     }
 

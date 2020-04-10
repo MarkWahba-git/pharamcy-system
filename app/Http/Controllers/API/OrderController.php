@@ -11,6 +11,7 @@ use App\Orders;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Resources\PharmacyResource;
 use App\Http\Requests\OrderRequest;
+use App\Address;
 
 
 class OrderController extends Controller
@@ -21,7 +22,6 @@ class OrderController extends Controller
     }
 
     public function show(Request $request, $id){
-
         try{
             //to make sure that this order belongs to this user 
             $order = Orders::where('user_id',$request->user()->id)
@@ -49,7 +49,15 @@ class OrderController extends Controller
     }
 
     public function store(OrderRequest $request){
-
+        $userID = $request->user()->id;
+        try{
+            Address::where('user_id',request()->user()->id)
+                ->where('id'->request()->address_id)->firstOrFail();
+        }catch(ModelNotFoundException $ex){
+            return response()->json([
+                'state'=>'the address not found'
+            ]);
+        }
         Orders::create(
             array_merge($request->all(), [
                 

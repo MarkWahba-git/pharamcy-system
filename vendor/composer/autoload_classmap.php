@@ -13,9 +13,12 @@ return array(
     'App\\Doctor' => $baseDir . '/app/Doctor.php',
     'App\\Drug' => $baseDir . '/app/Drug.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+=======
     'App\\Http\\Controllers\\API\\AddressController' => $baseDir . '/app/Http/Controllers/API/AddressController.php',
     'App\\Http\\Controllers\\API\\OrderController' => $baseDir . '/app/Http/Controllers/API/OrderController.php',
     'App\\Http\\Controllers\\API\\SanctumController' => $baseDir . '/app/Http/Controllers/API/SanctumController.php',
+>>>>>>> 8680cf8aca66af23217b45771f5af75a869251bd
     'App\\Http\\Controllers\\API\\UserController' => $baseDir . '/app/Http/Controllers/API/UserController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -28,6 +31,7 @@ return array(
     'App\\Http\\Controllers\\DrugController' => $baseDir . '/app/Http/Controllers/DrugController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\OrdersController' => $baseDir . '/app/Http/Controllers/OrdersController.php',
+    'App\\Http\\Controllers\\OrdersManagerController' => $baseDir . '/app/Http/Controllers/OrdersManagerController.php',
     'App\\Http\\Controllers\\PharmacyController' => $baseDir . '/app/Http/Controllers/PharmacyController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
@@ -46,6 +50,7 @@ return array(
     'App\\Mail\\WelcomeMail' => $baseDir . '/app/Mail/WelcomeMail.php',
     'App\\Notifications\\ResetPassword' => $baseDir . '/app/Notifications/ResetPassword.php',
     'App\\Orders' => $baseDir . '/app/Orders.php',
+    'App\\OrdersManager' => $baseDir . '/app/OrdersManager.php',
     'App\\Pharmacy' => $baseDir . '/app/Pharmacy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

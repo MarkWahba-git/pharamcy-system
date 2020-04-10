@@ -13,7 +13,7 @@ class OrderRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,12 +24,13 @@ class OrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'doctor_id'=>'required',
-            'pharmacy_id'=>'required',
-            'is_insured'=>'required',
-            'prescription1'=>'required|Image',
-            'prescription2'=>'Image',
-            'prescription3'=>'Image'
+            // 'doctor_id'=>'required',
+            // 'pharmacy_id'=>'required',
+            // 'is_insured'=>'required',
+            // 'prescription1'=>'required|Image',
+            // 'prescription2'=>'Image',
+            // 'prescription3'=>'Image',
+            // 'address_id'=>'required'
         ];
     }
 }
