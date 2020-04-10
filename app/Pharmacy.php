@@ -13,16 +13,15 @@ class Pharmacy extends Model
         'building_number',
         'owner_id',
         'area_id',
-        'priority_area_id',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo('App\User');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\User');
+    // }
 
-    public function area()
-    {
-        return $this->belongsTo('App\Area');
-    }
+    // public function area()
+    // {
+    //     return $this->belongsTo('App\Area');
+    // }
 }
