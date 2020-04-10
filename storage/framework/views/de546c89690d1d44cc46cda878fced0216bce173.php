@@ -176,6 +176,7 @@
 
         $(document).on('click','.edit',function(){
             var id = $(this).attr("id");
+            $('#form_output').html('');
             $.ajax({
                 url         : "<?php echo e(route('users.fetchUsers')); ?>",
                 method      : 'get',
