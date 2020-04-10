@@ -14,4 +14,25 @@ class Pharmacy extends Model
     public function getImageUrl(){
         return asset($this->image);
      }
+    protected $fillable = [
+        'name',
+        'street_name',
+        'building_number',
+        'owner_id',
+        'area_id',
+    ];
+
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\User');
+    // }
+
+    public function area()
+    {
+        return $this->belongsTo('App\Area');
+    }
+    public function orders()
+    {
+        return $this->hasMany('App\Orders');
+    }
 }

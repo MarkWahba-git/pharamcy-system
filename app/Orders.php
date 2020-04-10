@@ -23,4 +23,8 @@ class Orders extends Model
         return $this->hasOne('App\Doctor','id','doctor_id');
     }
    
+    public function items(){
+        
+        return $this->hasMany('App\Item');
+    }
 }

@@ -18,16 +18,16 @@
     <table class="table table-bordered table-striped" id="user_table">
     <thead>
         <tr>
+            <th>Avatar</th>
+            <th>National ID</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Date Of Birth</th>
+            <th>Gender</th>
+            <th>Phone Number</th>
             <th>Password</th>
             <th>Role</th>
-            <th>Street Name</th>
-            <th>Building Number</th>
-            <th>Floor Number</th>
-            <th>Flat Number</th>
-            <th>Area</th>
-            <th>National ID</th>
+            <th>Is Banned</th>
             <th>Action</th>
         </tr>
     </thead>
@@ -47,12 +47,34 @@
                     {{csrf_field()}}
                     <span id="form_output"></span>
                     <div class="form-group">
+                        <label>Enter National ID</label>
+                        <input type="text" name="nat_id" id="nat_id" class="form-control"/>
+                    </div>
+                    <div class="form-group">
                         <label>Enter Name</label>
                         <input type="text" name="name" id="name" class="form-control" />
                     </div>
                     <div class="form-group">
                         <label>Enter Email</label>
                         <input type="text" name="email" id="email" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Date Of Birth</label>
+                        <input type="date" name="dob" id="dob" class="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Choose Gender</label>
+                        <br>
+                        <input type="radio" name="gender" id="male" />
+                        <label for="male">Male</label>
+                        <br>
+                        <input type="radio" name="gender" id="female" />
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Phone Number</label>                        
+                        <input type="tel" id="phone" name="phone" placeholder="+20-1x-xxxx-xxxx" 
+                        pattern="[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{4}" required class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label>Enter Password</label>
@@ -63,28 +85,13 @@
                         <input type="text" name="role" id="role" class="form-control"/>
                     </div>
                     <div class="form-group">
-                        <label>Enter Street Name</label>
-                        <input type="text" name="street_name" id="street_name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Building Number</label>
-                        <input type="text" name="building_number" id="building_number" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Floor Number</label>
-                        <input type="text" name="floor_number" id="name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Flat Number</label>
-                        <input type="text" name="flat_number" id="name" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter Area</label>
-                        <input type="text" name="area" id="area" class="form-control"/>
-                    </div>
-                    <div class="form-group">
-                        <label>Enter National ID</label>
-                        <input type="text" name="nat_id" id="nat_id" class="form-control"/>
+                        <label>Banned or Ubanned</label>
+                        <br>
+                        <input type="radio" name="is_banned" id="1" />
+                        <label for="1">Banned</label>
+                        <br>
+                        <input type="radio" name="is_banned" id="0" />
+                        <label for="0">Unbanned</label>                    
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -106,16 +113,16 @@
             "serverSide" : true,
             "ajax"       : "{{ route('users.getUsers') }}",
             "columns"    : [
+                { "data" : "avatar" },
+                { "data" : "nat_id" },
                 { "data" : "name" },
                 { "data" : "email" },
+                { "data" : "dob" },
+                { "data" : "gender" },
+                { "data" : "phone_number" },
                 { "data" : "password" },
                 { "data" : "role" },
-                { "data" : "street_name" },
-                { "data" : "building_number" },
-                { "data" : "floor_number" },
-                { "data" : "flat_number" },
-                { "data" : "area_id" },
-                { "data" : "nat_id" },
+                { "data" : "is_banned" },
                 { "data" : "action" , orderable:false , searchable:false },
             ],
         });
@@ -169,16 +176,16 @@
                 dataType    : 'json',
                 success:function(data)
                 {
+                    $('#avatar').val(data.avatar);
+                    $('#nat_id').val(data.nat_id);
                     $('#name').val(data.name);
                     $('#email').val(data.email);
+                    $('#dob').val(data.dob);
+                    $('#gender').val(data.gender);
+                    $('#phone_number').val(data.phone_number);
                     $('#password').val(data.password);
                     $('#role').val(data.role);
-                    $('#street_name').val(data.street_name);
-                    $('#building_number').val(data.building_number);
-                    $('#floor_number').val(data.floor_number);
-                    $('#flat_number').val(data.flat_number);
-                    $('#area_id').val(data.area_id);
-                    $('#nat_id').val(data.nat_id);
+                    $('#is_banned').val(data.is_banned);
                     $('#user_id').val(id);
                     $('#userModal').modal('show');
                     $('#action').val('Edit');
