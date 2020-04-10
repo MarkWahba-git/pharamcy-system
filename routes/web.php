@@ -30,16 +30,16 @@ Route::group([],function(){
     Route::post('/pharmacies', 'PharmacyController@store')->name('pharmacies.store');
 });
 //=======================================================================================
-
-/* **Doctor Routes** */
-Route::group([],function(){ 
-    Route::get('doctor-list', 'DoctorController@index');
-    Route::get('doctor-list/{id}/edit', 'DoctorController@edit');
-    Route::post('doctor-list/store', 'DoctorController@store');
-    Route::get('doctor-list/delete/{id}', 'DoctorController@destroy');
-});
+/* **Orders Manager Routes** */
 //=======================================================================================
-
+Route::resource('ordersManager/ajaxOrders','OrdersManagerController');
+//=======================================================================================
+//=======================================================================================
+/* **Areas Routes** */
+//=======================================================================================
+Route::resource('ajaxAreas','AreaController');//=======================================================================================
+/* **address Routes** */
+//=======================================================================================
 /* **Drug Routes** */ 
 Route::group([],function(){
     Route::get('/drugs','DrugController@index')->name('drugs.index');
