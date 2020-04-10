@@ -23,7 +23,17 @@ class SanctumController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
-    
-        return $user->createToken($request->device_name)->plainTextToken;
+
+
+        $token =$user->createToken($request->device_name)->plainTextToken;
+        
+        return response()->json([
+            'token'=>$token,
+            'user-name'=>$user->name,
+            'nat-id'=>$user->nat_id
+            
+            ]);
+
+         
     }
 }

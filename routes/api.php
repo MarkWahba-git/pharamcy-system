@@ -22,6 +22,10 @@ use Illuminate\Validation\ValidationException;
 
 Route::post('/sanctum/token', 'API\SanctumController@generateToken');
 
-Route::get('/users', 'API\UserController@index');
 Route::post('/store', 'API\UserController@store');
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 

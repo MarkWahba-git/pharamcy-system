@@ -11,30 +11,47 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller 
 {
-    //
-    public function index(){
-        return User::all();
-    }
 
     public function store(Request $request){
         $validatedData = 
-        $request->validate([
+            $request->validate([
                 'name'=> 'required',
                 'email'=> 'required',
                 // 'gender'=> 'required|in:male,female',
                 'password'=> 'required',
                 'password_confirmation' => 'required_with:password|same:password',
-        //         // 'date_of_birth' => 'required',
-        //         // 'profile_image'=> 'required',
-        //         // 'mobile_number'=> 'required',
-        //         // 'national_id'=> 'required' 
+                // 'date_of_birth' => 'required',
+                // 'profile_image'=> 'required',
+                // 'mobile_number'=> 'required',
+                // 'national_id'=> 'required' 
             ]);
-            // User::create([
-            //     'name' => $validatedData['name'],
-            //     'email' => $validatedData['email'],
-            //     'password' => Hash::make($validatedData['password']),
-            //     // 'nat_id'=>'required'
-            // ]);
-            Mail::to( $validatedData['email'])->send(new WelcomeMail($validatedData));
+        
+        $validatedData['password']=Hash::make($validatedData['password']);
+        unset($validatedData["password_confirmation"]); 
+
+        
+        User::create($validatedData);
+        
+        Mail::to( $validatedData['email'])->send(new WelcomeMail($validatedData));
+        return response()->json(['state'=>'registeration done']);
+    }
+
+    public function edit(Request $request){
+        
+        $user = $request->user();
+
+        $validatedData = 
+            $request->validate([
+                'name'=> '',
+                'gender'=> 'in:male,female',
+                'password'=> '',
+                // 'date_of_birth' => '',
+                // 'profile_image'=> '',
+                // 'mobile_number'=> '',
+                // 'national_id'=> '' 
+            ]);
+
+        $user->update($validatedData);
+
     }
 }
