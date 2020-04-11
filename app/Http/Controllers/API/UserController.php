@@ -16,14 +16,14 @@ class UserController extends Controller
         $validatedData = 
             $request->validate([
                 'name'=> 'required',
-                'email'=> 'required',
-                // 'gender'=> 'required|in:male,female',
+                'email'=> 'required|email',
+                'gender'=> 'required|in:male,female',
                 'password'=> 'required',
                 'password_confirmation' => 'required_with:password|same:password',
-                // 'date_of_birth' => 'required',
-                // 'profile_image'=> 'required',
-                // 'mobile_number'=> 'required',
-                // 'national_id'=> 'required' 
+                'dob' => 'required|date',
+                // 'avatar'=> 'required|Image',
+                'phone_number'=> 'required',
+                'nat_id'=> 'required' 
             ]);
         
         $validatedData['password']=Hash::make($validatedData['password']);
