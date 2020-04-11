@@ -14,5 +14,98 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+<<<<<<< HEAD
     return view('welcome');
 });
+=======
+    return view('layouts.landing');
+});
+
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+/* **Pharmacy Routes** */
+//=======================================================================================
+Route::group([],function(){
+    Route::get('/pharmacies','PharmacyController@index')->name('pharmacies.index');
+    Route::get('/pharmacies/getPharmacies','PharmacyController@getPharmacies')->name('pharmacies.getPharmacies');
+    Route::post('/pharmacies/postPharmacies','PharmacyController@postPharmacies')->name('pharmacies.postPharmacies');
+    Route::get('/pharmacies/fetchPharmacies','PharmacyController@fetchPharmacies')->name('pharmacies.fetchPharmacies');
+    Route::get('/pharmacies/removePharmacy','PharmacyController@removePharmacy')->name('pharmacies.removePharmacy');
+});
+//=======================================================================================
+/* **Orders Manager Routes** */
+//=======================================================================================
+Route::resource('ordersManager/ajaxOrders','OrdersManagerController');
+//=======================================================================================
+//=======================================================================================
+/* **Areas Routes** */
+//=======================================================================================
+Route::resource('ajaxAreas','AreaController');//=======================================================================================
+/* **address Routes** */
+//=======================================================================================
+/* **Drug Routes** */ 
+Route::group([],function(){
+    Route::get('/drugs','DrugController@index')->name('drugs.index');
+    Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
+    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
+    Route::get('/drugs/getdrugs','DrugController@getDrugs')->name('drugs.getdrugs');
+    Route::post('/drugs/postdrugs','DrugController@addDrug')->name('drugs.postdrugs');
+    Route::get('/drugs/fetchdrugs','DrugController@fetchDrug')->name('drugs.fetchdrugs');
+    Route::get('/drugs/deletedrugs','DrugController@deleteDrug')->name('drugs.deletedrugs');
+    Route::get('/drugs/selectdrugs','DrugController@selectDrugs')->name('drugs.selectdrugs');
+    Route::post('/drugs/fetchlist','DrugController@fetchList')->name('drugs.fetchlist');
+    Route::get('/drugs/orderdrugs','DrugController@orderDrugs')->name('drugs.orderdrugs');
+});
+//=======================================================================================
+/** Item Routes **/
+Route::group([],function(){
+    Route::get('/drugs/orderdrugs/{order_id}/','ItemController@orderDrugs')->name('drugs.orderdrugs');
+    Route::post('/drugs/store/{order_id}/','ItemController@store')->name('drugs.store');
+    
+});
+//========================================================================
+
+/* **User Routes** */ 
+Route::group([],function(){
+    Route::get('/users','UserController@index')->name('users.index');
+    Route::get('/users/getUsers','UserController@getUsers')->name('users.getUsers');
+    Route::post('/users/postUsers','UserController@postUsers')->name('users.postUsers');
+    Route::get('/users/fetchUsers','UserController@fetchUsers')->name('users.fetchUsers');
+    Route::get('/users/removeUser','UserController@removeUser')->name('users.removeUser');
+});
+//============================================================================================
+
+/* **Orders Routes** */
+Route::group([],function(){
+    Route::get('/orders','OrdersController@index')->name('orders.index');
+    Route::get('/orders/getdata','OrdersController@getData')->name('orders.getdata');
+    Route::post('/orders/postorder','OrdersController@postOrders')->name('orders.postorder');
+    Route::get('orders/fetchorder', 'OrdersController@fetchorder')->name('orders.fetchorder');
+    Route::get('orders/removeorder', 'OrdersController@removeorder')->name('orders.removeorder');
+});
+//============================================================================================
+
+/* **Doctors Routes** */
+Route::group([],function(){
+    Route::get('/doctorstab','DoctorTabController@index')->name('doctorstab.index');
+    Route::delete('/doctorstab/{doctor}','DoctorTabController@destroy')->name('doctorstab.destroy');
+    Route::get('/doctorstab/{doctor}/edit','DoctorTabController@edit')->name('doctorstab.edit');
+    Route::put('/doctorstab/{doctor}','DoctorTabController@update')->name('doctorstab.update');
+    Route::put('/doctorstab/ban/{doctor}','DoctorTabController@ban')->name('doctorstab.ban');
+    Route::get('/doctorstab/fetch_image/{doctor}', 'DoctorTabController@fetch_image')->name('doctorstab.fetch_image');
+
+    //create doctor
+    Route::get('/doctorstab/create','DoctorTabController@create')->name('doctorstab.create');
+    Route::post('/doctorstab','DoctorTabController@store')->name('doctorstab.store');
+});
+//============================================================================================
+
+
+Auth::routes(['register' => false,
+            'verify' => true
+]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+>>>>>>> Dev
