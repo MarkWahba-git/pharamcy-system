@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Database\QueryException;
 
 class UserController extends Controller 
 {
@@ -29,30 +29,36 @@ class UserController extends Controller
         $validatedData['password']=Hash::make($validatedData['password']);
         unset($validatedData["password_confirmation"]); 
 
-        
-        User::create($validatedData);
+        try{
+            User::create($validatedData);
+        }catch(QueryException $ex){
+            return response()->json(['state'=>'registeration failed email already registerd']);
+        }
         
         Mail::to( $validatedData['email'])->send(new WelcomeMail($validatedData));
         return response()->json(['state'=>'registeration done']);
     }
 
-    public function edit(Request $request){
+    public function update(Request $request){
         
         $user = $request->user();
 
         $validatedData = 
             $request->validate([
                 'name'=> 'required',
-                // 'gender'=> 'required|in:male,female',
+                // 'email'=> 'required|email',
+                'gender'=> 'required|in:male,female',
                 'password'=> 'required',
                 'password_confirmation' => 'required_with:password|same:password',
-                // 'date_of_birth' => 'required',
-                // 'profile_image'=> 'required',
-                // 'mobile_number'=> 'required',
-                // 'national_id'=> 'required' 
+                'dob' => 'required|date',
+                // 'avatar'=> 'required|Image',
+                'phone_number'=> 'required',
+                'nat_id'=> 'required' 
             ]);
 
         $user->update($validatedData);
+        return response()->json(['state'=>'update done']);
+
 
     }
 }

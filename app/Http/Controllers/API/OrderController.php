@@ -49,22 +49,12 @@ class OrderController extends Controller
     }
 
     public function store(OrderRequest $request){
-        $userID = $request->user()->id;
-        try{
-            Address::where('user_id',request()->user()->id)
-                ->where('id'->request()->address_id)->firstOrFail();
-        }catch(ModelNotFoundException $ex){
-            return response()->json([
-                'state'=>'the address not found'
-            ]);
-        }
-        Orders::create(
-            array_merge($request->all(), [
-                
-                'user_id' => $request->user()->id,
-                'status'=>'new'
-                ]));
-        
+            Orders::create(
+                array_merge($request->all(), [
+                    
+                    'user_id' => $request->user()->id,
+                    'status'=>'new'
+                    ]));
         return response()->json(['state'=>'order is added']);
     }
     

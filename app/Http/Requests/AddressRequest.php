@@ -25,10 +25,10 @@ class AddressRequest extends FormRequest
     {
         return [
             'area_id'=>'required|exists:areas,id',
-            // 'street_name'=>'required',
-            // 'building_number'=>'required',
-            // 'floor_number'=>'required',
-            // 'flat_number'=>'required',
+            'street_name'=>'required',
+            'building_number'=>'required',
+            'floor_number'=>'required',
+            'flat_number'=>'required',
             'is_main'=>'required|in:0,1'
         ];
     }

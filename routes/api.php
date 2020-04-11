@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
 
 Route::post('/sanctum/token', 'API\SanctumController@generateToken');
@@ -24,6 +24,9 @@ Route::post('/sanctum/token', 'API\SanctumController@generateToken');
 Route::post('/users', 'API\UserController@store');
 
 Route::group(['middleware'=>'auth:sanctum'], function(){
+
+    Route::patch('/users', 'API\UserController@update');
+
 
     Route::get('/addresses','API\AddressController@index');
     Route::post('/addresses','API\AddressController@store');
