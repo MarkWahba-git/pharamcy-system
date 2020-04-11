@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-    return view('welcome');
-});
-=======
     return view('layouts.landing');
 });
 
@@ -108,4 +104,3 @@ Auth::routes(['register' => false,
 ]);
 
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> Dev
